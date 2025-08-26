@@ -6,6 +6,7 @@ def main():
                           api_key=os.environ['UPDATECONFIGKEY'])
   data = {'descriptor': "sgtk:descriptor:git_branch?branch="+os.environ['BRANCH']+"&path=https://github.com/Dps-CCV/DPS_SHOTGRID_UNREAL.git&version="+os.environ['NEWCODE']}
   id = 2509
+  print(data)
   sg.update('PipelineConfiguration', id, data)
 
 
