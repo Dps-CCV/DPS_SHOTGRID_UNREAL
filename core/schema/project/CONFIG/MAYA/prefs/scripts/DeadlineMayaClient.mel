@@ -1,0 +1,133 @@
+// InitDeadlineSubmitter.mel:
+// This file belongs in Maya\scripts\startup\
+//
+// It causes Maya to install the Deadline submission dialog
+// from the repository. This is to allow the submission dialog
+// to auto-upgrade when new versions are released.
+//
+
+proc string CheckSlashes( string $filename )
+{
+	//string $result = substituteAllString( $filename, "\\", "/" ); // switch from '\' to '/'
+	//$result = substituteAllString( $result, "//", "/" ); // replace double '/' where paths may have been combined
+	//if( startsWith( $result, "/" ) )
+	//	$result = "/" + $result;
+	//return $result;
+	
+	string $result = $filename;
+	string $newResult;
+	$newResult = `substitute "\\\\" $result "/"`;
+	while( $newResult != $result )
+	{
+		$result = $newResult;
+		$newResult = `substitute "\\\\" $result "/"`;
+	}
+	
+	$result = $newResult;
+	$newResult = `substitute "//" $result "/"`;
+	while( $newResult != $result )
+	{
+		$result = $newResult;
+		$newResult = `substitute "//" $result "/"`;
+	}
+	
+	if( startsWith( $newResult, "/" ) )
+		$newResult = "/" + $newResult;
+	
+	return $newResult;
+}
+
+global proc string getDeadlineCommand()
+{
+	string $deadlineBin = `getenv "DEADLINE_PATH"`;
+	string $deadlineCommand = "";
+		
+	if( $deadlineBin == "" && `about -macOS`)
+	{	
+		string $deadlineBinPath = "/Users/Shared/Thinkbox/DEADLINE_PATH";
+		if( `filetest -f $deadlineBinPath` )
+		{
+			int $fileId = fopen( $deadlineBinPath, "r" );
+			string $s;
+			$deadlineBin = fread( $fileId, $s );
+			fclose( $fileId );
+		}
+		
+		$deadlineBin = strip( $deadlineBin );
+	}
+	
+	if( $deadlineBin != "" )
+	{
+		$deadlineBin =  $deadlineBin +"/";
+	}
+	
+	if( `about -nt` )
+	{	
+		$deadlineCommand = $deadlineBin + "deadlinecommand.exe";
+	}
+	else
+	{
+		$deadlineCommand = $deadlineBin + "deadlinecommand";
+	}
+	
+	return $deadlineCommand;
+}
+
+global proc string SafeDeadlineCommand( string $command )
+{
+	string $result = "";
+	
+	int $batchMode = `about -batch`;
+	if( !$batchMode )
+		print( "running deadline command: " + $command + "\n" );
+	
+	string $deadlineCommandString = "";
+	
+	string $deadlineCommand = getDeadlineCommand();
+	
+	$deadlineCommandString = "\""+$deadlineCommand + "\" "+$command;
+	
+	$result = system( $deadlineCommandString );
+	
+	$result = substituteAllString( $result, "\r", "" );
+	
+	string $resultArray[];
+	$resultArray = stringToStringArray( $result, "\n" );
+	//if( size($resultArray) > 2 && startsWith( $resultArray[2], "UNC paths are not supported." ) )
+	if( size($resultArray) > 2 && ( startsWith( $resultArray[0], "'\\\\" ) || startsWith( $resultArray[0], "'//" ) ) )
+	{
+		int $tempResultArraySize = size($resultArray) - 3;
+		string $tempResultArray[];
+		for( $i = 0; $i < $tempResultArraySize; $i++ )
+			$tempResultArray[$i] = $resultArray[$i+3];
+		$result = stringArrayToString( $tempResultArray, "\n" );
+	}
+	
+	if( endsWith( $result, "\n" ) )
+		$result = substring( $result, 1, size( $result ) - 1 );
+	
+	return $result;
+}
+
+global proc string GetRepoFilePath()
+{
+	global string $MayaRepoPath;
+
+	if( $MayaRepoPath == "" )
+	{
+		$MayaRepoPath = CheckSlashes( SafeDeadlineCommand( "-getrepositoryfilepath submission/Maya/Main/SubmitMayaToDeadline.mel" ) );
+	}
+
+	return $MayaRepoPath;
+}
+
+global proc DeadlineMayaClient()
+{
+	string $scriptPath = GetRepoFilePath();
+	print("Running submission script \"" + $scriptPath + "\"\n"); 
+	// Run the submission script, to install the SubmitJobToDeadline() function
+	if( `filetest -f $scriptPath` )
+		eval( "source \"" + $scriptPath + "\";" );
+	else
+		warning( "The SubmitMayaToDeadline.mel script could not be found in the Deadline Repository. Please make sure that the Deadline Client has been installed on this machine, that the Deadline Client bin folder is set in the DEADLINE_PATH environment variable, and that the Deadline Client has been configured to point to a valid Repository." );
+}

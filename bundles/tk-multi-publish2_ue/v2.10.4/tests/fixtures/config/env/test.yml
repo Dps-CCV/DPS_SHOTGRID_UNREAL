@@ -1,0 +1,82 @@
+# Copyright (c) 2017 Shotgun Software Inc.
+#
+# CONFIDENTIAL AND PROPRIETARY
+#
+# This work is provided "AS IS" and subject to the Shotgun Pipeline Toolkit
+# Source Code License included in this distribution package. See LICENSE.
+# By accessing, using, copying or modifying this work you indicate your
+# agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
+# not expressly granted therein are reserved by Shotgun Software Inc.
+#
+
+# All the bundles are relative to this repo, except for tk-shell, as there
+# is little chance it will need to be edited. All other repos are common
+# on dev machines.
+
+engines:
+  tk-shell:
+    location:
+      type: path
+      path: $SHOTGUN_REPOS_ROOT/tk-shell
+    apps:
+      tk-multi-publish2:
+        location:
+          type: path
+          path: $SHOTGUN_CURRENT_REPO_ROOT
+        help_url: https://help.autodesk.com/view/SGSUB/ENU/?guid=SG_Supervisor_Artist_sa_integrations_sa_integrations_user_guide_html#the-publisher
+        collector: "{config}/collector.py"
+        publish_plugins:
+          - name: PluginWithoutUi
+            hook: "{config}/plugin_without_ui.py"
+            settings: {}
+          - name: PluginWithUi
+            hook: "{config}/plugin_with_ui.py"
+            settings:
+              edit: "This is the default edit value."
+              number: 99
+              boolean: false
+          - name: PluginWithUIAsAnotherName
+            hook: "{config}/plugin_with_ui.py"
+            settings:
+              edit: "This is another UI plugin's default edit value."
+              number: 42
+              boolean: true
+          - name: PluginWithNoMultiUi
+            hook: "{config}/plugin_with_ui.py"
+            settings:
+              edit: "You will never be able to edit this multiple tasks at a time."
+              number: 0
+              boolean: false
+              supports_multi_edit: false
+          - name: Property Test 1
+            hook: "{self}/publish_file.py:{config}/test_properties_plugin_1.py"
+            settings: {}
+          - name: Property Test 2
+            hook: "{self}/publish_file.py:{config}/test_properties_plugin_2.py"
+            settings: {}
+          - name: Property Test 3
+            hook: "{self}/publish_file.py:{config}/test_properties_plugin_3.py"
+            settings: {}
+          - name: Plugin 1 of 3 (#2 should be HIDDEN)
+            hook: "{self}/publish_file.py:{config}/visible_plugin1.py"
+            settings: {}
+          - name: Invisible Plugin
+            hook: "{self}/publish_file.py:{config}/hidden_plugin2.py"
+            settings: {}
+          - name: Plugin 3 of 3 (#2 should be HIDDEN)
+            hook: "{self}/publish_file.py:{config}/visible_plugin3.py"
+            settings: {}
+          - name: Vitor's Plugin
+            hook: "{config}/vitor_test.py"
+            settings: {}
+        post_phase: "{config}/post_phase_test.py"
+
+frameworks:
+  tk-framework-qtwidgets_v2.x.x:
+    location:
+      type: path
+      path: $SHOTGUN_REPOS_ROOT/tk-framework-qtwidgets
+  tk-framework-shotgunutils_v5.x.x:
+    location:
+      type: path
+      path: $SHOTGUN_REPOS_ROOT/tk-framework-shotgunutils

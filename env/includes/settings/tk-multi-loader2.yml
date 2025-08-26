@@ -1,0 +1,645 @@
+# Copyright (c) 2017 Shotgun Software Inc.
+#
+# CONFIDENTIAL AND PROPRIETARY
+#
+# This work is provided "AS IS" and subject to the Shotgun Pipeline Toolkit
+# Source Code License included in this distribution package. See LICENSE.
+# By accessing, using, copying or modifying this work you indicate your
+# agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
+# not expressly granted therein are reserved by Shotgun Software Inc.
+
+################################################################################
+
+includes:
+- ../app_locations.yml
+- ../unreal/settings/tk-multi-loader2.yml
+
+################################################################################
+
+# 3dsmaxplus
+settings.tk-multi-loader2.3dsmaxplus: &settings_tk-multi-loader2_3dsmaxplus
+  action_mappings:
+    3dsmax Scene: [import, reference]
+    Alembic Cache: [import]
+    Image: [texture_node]
+    Rendered Image: [texture_node]
+    Texture: [texture_node]
+  entities:
+  - caption: Assets
+    entity_type: Asset
+    filters:
+    - [project, is, '{context.project}']
+    hierarchy: [sg_asset_type, code]
+  - caption: Shots
+    entity_type: Shot
+    filters:
+    - [project, is, '{context.project}']
+    hierarchy: [sg_sequence, code]
+  - caption: My Tasks
+    entity_type: Task
+    filters:
+    - [task_assignees, is, '{context.user}']
+    - [project, is, '{context.project}']
+    hierarchy: [entity, content]
+  location: "@apps.tk-multi-loader2.location"
+
+# 3dsmax
+# Uses the same settings, but a different hook.
+settings.tk-multi-loader2.3dsmax:
+  <<: *settings_tk-multi-loader2_3dsmaxplus
+  actions_hook: "{engine}/tk-multi-loader2/basic/scene_actions.py"
+
+
+# flame
+settings.tk-multi-loader2.flame:
+  actions_hook: '{engine}/tk-multi-loader2/flame_loader_actions.py'
+  action_mappings:
+    Flame Batch File: [load_setup]
+    Flame Quicktime: [load_clip]
+    Flame Render: [load_clip]
+    Flame OpenClip: [load_clip]
+    Photoshop Image: [load_clip]
+    Rendered Image: [load_clip]
+    Image: [load_clip]
+    Movie: [load_clip]
+    Texture: [load_clip]
+  entity_mappings:
+    Shot: [load_batch]
+    CutItem: [load_batch]
+  location: "@apps.tk-multi-loader2.location"
+
+# houdini
+settings.tk-multi-loader2.houdini:
+  actions_hook: '{config}/tk-multi-loader2/tk-houdini_actions.py'
+  action_mappings:
+    Alembic Cache: [import, file_node, alembic_archive]
+    Houdini Scene: [merge]
+    Image: [file_cop, cam_background]
+    IMAGE_PLANE: [file_cop, cam_background]
+    PARAFX Hiero: [file_cop, cam_background]
+    BG_MATTEPAINT: [file_cop, cam_background]
+    PRECOMP: [file_cop, cam_background]
+    TECH_PRECOMP: [file_cop, cam_background]
+    RENDER_MAYA: [file_cop, cam_background]
+    RENDER_NUKE: [file_cop, cam_background]
+    ALPHA RENDER: [file_cop, cam_background]
+    VREF Hiero: [file_cop, cam_background]
+    Photoshop Image: [file_cop, cam_background]
+    Rendered Image: [file_cop, cam_background]
+    Texture: [file_cop]
+    HOUDINI BGEO: [file_node]
+    Sc File: [file_node]
+    Geo File: [file_node]
+    Ass Cache: [ ass_procedural, ass_include ]
+    Vdb Cache: [ file_node ]
+    FBX Camera: [ import_fbx ]
+    Alembic Camera: [ alembic_archive ]
+  entities:
+  - caption: Current_Shot
+    entity_type: Task
+    filters:
+      - [ project, is, '{context.project}' ]
+      - [ entity, is, '{context.entity}' ]
+      - [ sg_status_list, not_in, [ 'bid', 'omt', 'hld' ] ]
+    hierarchy: [ content ]
+  - caption: Linked_Assets
+    entity_type: Task
+    filters:
+      - [ project, is, '{context.project}' ]
+      - { "filter_operator": "any", "filters": [ [ entity, is, '{context.entity}' ], [ entity.Asset.shots, is, '{context.entity}' ], [ entity.Asset.assets, is, '{context.entity}' ], [ entity.Shot.assets, is, '{context.entity}' ] ] }
+      - [ sg_status_list, not_in, [ 'bid', 'omt', 'hld' ] ]
+      - { "filter_operator": "any", "filters": [ [ entity.Shot.sg_status_list, not_in, [ 'bid', 'omt', 'hld' ] ], [ entity.Asset.sg_status_list, not_in, [ 'bid', 'omt', 'hld' ] ] ] }
+    hierarchy: [ entity, content ]
+  - caption: Library - Assets
+    entity_type: Asset
+    filters:
+      - [ linked_projects, is, "{context.project}" ]
+    hierarchy: [ project.Project.name, sg_asset_type, code ]
+  - caption: Shots_in_current_sequence
+    entity_type: Task
+    filters:
+      - [ project, is, '{context.project}' ]
+      - [ entity.Shot.sg_sequence.Sequence.shots, is, '{context.entity}' ]
+      - [ sg_status_list, not_in, [ 'bid', 'omt', 'hld' ] ]
+      - [ entity.Shot.sg_status_list, not_in, [ 'bid', 'omt', 'hld' ] ]
+    hierarchy: [ entity, content ]
+  - caption: Assets
+    entity_type: Asset
+    filters:
+    - [project, is, '{context.project}']
+    - [ sg_status_list, not_in, ['bid', 'omt', 'hld'] ]
+    hierarchy: [sg_asset_type, code]
+  - caption: Shots
+    entity_type: Shot
+    filters:
+    - [project, is, '{context.project}']
+    - [ sg_status_list, not_in, ['bid', 'omt', 'hld'] ]
+    hierarchy: [sg_sequence, code]
+  - caption: My Tasks
+    entity_type: Task
+    filters:
+    - [task_assignees, is, '{context.user}']
+    - [project, is, '{context.project}']
+    - [ sg_status_list, not_in, ['bid', 'omt', 'hld'] ]
+    hierarchy: [entity, content]
+  publish_filters: [["sg_status_list", "is_not", null]]
+  location: "@apps.tk-multi-loader2.location"
+
+# mari
+settings.tk-multi-loader2.mari:
+  action_mappings:
+    Alembic Cache: [geometry_import]
+  entities:
+  - caption: Assets
+    entity_type: Asset
+    filters:
+    - [project, is, '{context.project}']
+    - [ sg_status_list, not_in, ['bid', 'omt', 'hld'] ]
+    hierarchy: [sg_asset_type, code]
+    publish_filters: []
+  - caption: My Tasks
+    entity_type: Task
+    filters:
+    - [task_assignees, is, '{context.user}']
+    - [project, is, '{context.project}']
+    - [ sg_status_list, not_in, ['bid', 'omt', 'hld'] ]
+    hierarchy: [entity, content]
+    publish_filters: []
+  title_name: Import
+  location: '@apps.tk-multi-loader2.location'
+
+# maya
+settings.tk-multi-loader2.maya:
+  actions_hook: '{config}/tk-multi-loader2/tk-maya_actions.py'
+  action_mappings:
+    Alembic Cache: [reference_alembic, import, Alembic_Import/Merge]
+    FBX Camera: [reference, import]
+    Alembic Camera: [reference, import]
+    Image: [texture_node, image_plane]
+    Maya Scene: [reference, import]
+    Maya Shader Network: [reference]
+    Photoshop Image: [texture_node, image_plane]
+    Rendered Image: [texture_node, image_plane]
+    Texture: [texture_node, image_plane]
+    Particles cache:  [reference_alembic, import, Alembic_Import/Merge]
+    Ass Cache: [standIn]
+    Vdb Cache: [volume]
+    PRECOMP: [texture_node, image_plane]
+    TECH_PRECOMP: [texture_node, image_plane]
+    BG_MATTEPAINT: [texture_node, image_plane]
+    IMAGE_PLANE: [texture_node, image_plane]
+    HIERO PLATE: [texture_node, image_plane]
+    PARAFX Plate: [texture_node, image_plane]
+    VREF Hiero: [texture_node, image_plane]
+    RENDER_MAYA: [texture_node, image_plane]
+    RENDER_NUKE: [texture_node, image_plane]
+    ALPHA RENDER: [texture_node, image_plane]
+    Hiero Audio: [audio]
+    Unreal FBX: [reference, import]
+  entities:
+  - caption: Current_Shot
+    entity_type: Task
+    filters:
+      - [ project, is, '{context.project}' ]
+      - [ entity, is, '{context.entity}' ]
+      - [ sg_status_list, not_in, [ 'bid', 'omt', 'hld' ] ]
+    hierarchy: [ content ]
+  - caption: Linked_Assets
+    entity_type: Task
+    filters:
+      - [ project, is, '{context.project}' ]
+      - { "filter_operator": "any", "filters": [ [ entity, is, '{context.entity}' ], [ entity.Asset.shots, is, '{context.entity}' ], [ entity.Asset.assets, is, '{context.entity}' ], [ entity.Shot.assets, is, '{context.entity}' ] ] }
+      - [ sg_status_list, not_in, [ 'bid', 'omt', 'hld' ] ]
+      - { "filter_operator": "any", "filters": [ [ entity.Shot.sg_status_list, not_in, [ 'bid', 'omt', 'hld' ] ], [ entity.Asset.sg_status_list, not_in, [ 'bid', 'omt', 'hld' ] ] ] }
+    hierarchy: [ entity, content ]
+  - caption: Shots_in_current_sequence
+    entity_type: Task
+    filters:
+      - [ project, is, '{context.project}' ]
+      - [ entity.Shot.sg_sequence.Sequence.shots, is, '{context.entity}' ]
+      - [ sg_status_list, not_in, [ 'bid', 'omt', 'hld' ] ]
+      - [ entity.Shot.sg_status_list, not_in, [ 'bid', 'omt', 'hld' ] ]
+    hierarchy: [ entity, content ]
+  - caption: Assets
+    entity_type: Asset
+    filters:
+    - [project, is, "{context.project}"]
+    - [ sg_status_list, not_in, ['bid', 'omt', 'hld'] ]
+    hierarchy: [sg_asset_type, code]
+  - caption: Library - Assets
+    entity_type: Asset
+    filters:
+      - [ linked_projects, is, "{context.project}" ]
+    hierarchy: [ project.Project.name, sg_asset_type, code ]
+  - caption: Shots
+    entity_type: Shot
+    filters:
+    - [project, is, "{context.project}"]
+    - [ sg_status_list, not_in, ['bid', 'omt', 'hld'] ]
+    hierarchy: [sg_sequence, code]
+  - caption: My Tasks
+    entity_type: Task
+    filters:
+    - [task_assignees, is, "{context.user}"]
+    - [project, is, "{context.project}"]
+    - [ sg_status_list, not_in, ['bid', 'omt', 'hld'] ]
+    hierarchy: [entity, content]
+  publish_filters: [["sg_status_list", "is_not", null]]
+  location: "@apps.tk-multi-loader2.location"
+
+# nuke
+settings.tk-multi-loader2.nuke:
+  actions_hook: '{config}/tk-multi-loader2/tk-nuke_actions.py'
+  action_mappings:
+    Alembic Cache: [read_node]
+    Alembic Camera: [camera_node]
+    FBX Camera: [camera_node]
+    Flame Render: [read_node]
+    Flame Quicktime: [read_node]
+    Image: [read_node]
+    Movie: [read_node]
+    Nuke Script: [script_import, liveGroup_node]
+    Hiero Plate: [read_node]
+    VREF Hiero: [read_node]
+    PRECOMP: [read_node]
+    TECH_PRECOMP: [read_node]
+    BG_MATTEPAINT: [read_node]
+    IMAGE_PLANE: [read_node]
+    PARAFX Hiero: [read_node]
+    RENDER_MAYA: [read_node]
+    RENDER_NUKE: [read_node]
+    ALPHA_RENDER: [read_node]
+    Photoshop Image: [read_node]
+    Rendered Image: [read_node]
+    Texture: [read_node]
+    Hiero Audio: [audioread_node]
+  entities:
+  - caption: Current_Shot
+    entity_type: Task
+    filters:
+      - [ project, is, '{context.project}' ]
+      - [ entity, is, '{context.entity}' ]
+      - [ sg_status_list, not_in, [ 'bid', 'omt', 'hld' ] ]
+    hierarchy: [ content ]
+  - caption: Linked_Assets
+    entity_type: Task
+    filters:
+      - [ project, is, '{context.project}' ]
+      - {"filter_operator": "any", "filters": [[ entity, is, '{context.entity}' ], [ entity.Asset.shots, is, '{context.entity}' ], [ entity.Asset.assets, is, '{context.entity}' ], [ entity.Shot.assets, is, '{context.entity}' ]]}
+      - [ sg_status_list, not_in, [ 'bid', 'omt', 'hld' ] ]
+      - {"filter_operator": "any", "filters": [[ entity.Shot.sg_status_list, not_in, [ 'bid', 'omt', 'hld' ] ], [ entity.Asset.sg_status_list, not_in, [ 'bid', 'omt', 'hld' ] ]]}
+    hierarchy: [ entity, content ]
+  - caption: Library - Assets
+    entity_type: Asset
+    filters:
+      - [ linked_projects, is, "{context.project}" ]
+    hierarchy: [ project.Project.name, sg_asset_type, code ]
+  - caption: Shots_in_current_sequence
+    entity_type: Task
+    filters:
+      - [ project, is, '{context.project}' ]
+      - [ entity.Shot.sg_sequence.Sequence.shots, is, '{context.entity}' ]
+      - [ sg_status_list, not_in, [ 'bid', 'omt', 'hld' ] ]
+      - [ entity.Shot.sg_status_list, not_in, [ 'bid', 'omt', 'hld' ] ]
+    hierarchy: [ entity, content ]
+  - caption: Assets
+    entity_type: Asset
+    filters:
+    - [project, is, '{context.project}']
+    - [ sg_status_list, not_in, ['bid', 'omt', 'hld'] ]
+    hierarchy: [sg_asset_type, code]
+  - caption: Shots
+    entity_type: Shot
+    filters:
+    - [project, is, '{context.project}']
+    - [ sg_status_list, not_in, ['bid', 'omt', 'hld'] ]
+    hierarchy: [sg_sequence.Sequence.episode, sg_sequence, code]
+  - caption: My Tasks
+    entity_type: Task
+    filters:
+    - [task_assignees, is, '{context.user}']
+    - [project, is, '{context.project}']
+    - [ sg_status_list, not_in, ['bid', 'omt', 'hld'] ]
+    hierarchy: [entity, content]
+  publish_filters: [["sg_status_list", "is_not", null]]
+  location: "@apps.tk-multi-loader2.location"
+
+# nuke studio (actions hook)
+settings.tk-multi-loader2.nukestudio.project:
+  actions_hook: '{self}/tk-nuke_actions.py'
+  action_mappings:
+    Image: [clip_import]
+    Movie: [clip_import]
+    Rendered Image: [clip_import]
+    Nuke Script: [ script_import ]
+    Hiero Plate: [clip_import]
+    VREF Hiero: [clip_import]
+    PRECOMP: [clip_import]
+    TECH_PRECOMP: [clip_import]
+    BG_MATTEPAINT: [clip_import]
+    IMAGE_PLANE: [clip_import]
+    PARAFX Hiero: [clip_import]
+    RENDER_MAYA: [clip_import]
+    RENDER_NUKE: [clip_import]
+    ALPHA_RENDER: [clip_import]
+  entities:
+  - caption: Assets
+    entity_type: Asset
+    filters:
+    - [project, is, '{context.project}']
+    hierarchy: [sg_asset_type, code]
+  - caption: Library - Assets
+    entity_type: Asset
+    filters:
+      - [ linked_projects, is, "{context.project}" ]
+    hierarchy: [ project.Project.name, sg_asset_type, code ]
+  - caption: Shots
+    entity_type: Shot
+    filters:
+    - [project, is, '{context.project}']
+    hierarchy: [sg_sequence.Sequence.episode, sg_sequence, code]
+  - caption: My Tasks
+    entity_type: Task
+    filters:
+    - [task_assignees, is, '{context.user}']
+    - [project, is, '{context.project}']
+    hierarchy: [entity, content]
+  publish_filters: [["sg_status_list", "is_not", null]]
+  location: "@apps.tk-multi-loader2.location"
+
+settings.tk-multi-loader2.nukestudio:
+  actions_hook: '{self}/tk-nuke_actions.py'
+  action_mappings:
+    Alembic Cache: [read_node]
+    Image: [read_node]
+    Movie: [read_node]
+    Nuke Script: [script_import]
+    NukeStudio Project: [open_project]
+    Photoshop Image: [read_node]
+    Rendered Image: [read_node]
+    Texture: [read_node]
+    Hiero Plate: [ clip_import ]
+    VREF Hiero: [ clip_import ]
+    PRECOMP: [ clip_import ]
+    TECH_PRECOMP: [ clip_import ]
+    BG_MATTEPAINT: [ clip_import ]
+    IMAGE_PLANE: [ clip_import ]
+    PARAFX Hiero: [ clip_import ]
+    RENDER_MAYA: [ clip_import ]
+    RENDER_NUKE: [ clip_import ]
+  entities:
+  - caption: Assets
+    entity_type: Asset
+    filters:
+    - [project, is, '{context.project}']
+    hierarchy: [sg_asset_type, code]
+  - caption: Library - Assets
+    entity_type: Asset
+    filters:
+      - [ linked_projects, is, "{context.project}" ]
+    hierarchy: [ project.Project.name, sg_asset_type, code ]
+  - caption: Shots
+    entity_type: Shot
+    filters:
+    - [project, is, '{context.project}']
+    hierarchy: [sg_sequence, code]
+  - caption: My Tasks
+    entity_type: Task
+    filters:
+    - [task_assignees, is, '{context.user}']
+    - [project, is, '{context.project}']
+    hierarchy: [entity, content]
+  publish_filters: [["sg_status_list", "is_not", null]]
+  location: "@apps.tk-multi-loader2.location"
+
+# photoshop
+settings.tk-multi-loader2.photoshop:
+  action_mappings:
+    Photoshop Image: [add_as_a_layer, open_file]
+    Rendered Image: [add_as_a_layer, open_file]
+    Hiero Plate: [add_as_a_layer, open_file]
+    VREF Hiero: [add_as_a_layer, open_file]
+    PARAFX Hiero: [add_as_a_layer, open_file]
+    Image: [add_as_a_layer, open_file]
+    Texture: [add_as_a_layer, open_file]
+    PRECOMP: [add_as_a_layer, open_file]
+    TECH_PRECOMP: [add_as_a_layer, open_file]
+    BG_MATTEPAINT: [add_as_a_layer, open_file]
+    IMAGE_PLANE: [add_as_a_layer, open_file]
+    Flame Render: [add_as_a_layer, open_file]
+    RENDER_MAYA: [add_as_a_layer, open_file]
+    RENDER_NUKE: [add_as_a_layer, open_file]
+    ALPHA_RENDER: [add_as_a_layer, open_file]
+
+  entities:
+  - caption: Assets
+    entity_type: Asset
+    filters:
+    - [project, is, '{context.project}']
+    - [ sg_status_list, not_in, ['bid', 'omt', 'hld'] ]
+    hierarchy: [sg_asset_type, code]
+  - caption: Library - Assets
+    entity_type: Asset
+    filters:
+      - [ linked_projects, is, "{context.project}" ]
+    hierarchy: [ project.Project.name, sg_asset_type, code ]
+  - caption: Shots
+    entity_type: Shot
+    filters:
+    - [project, is, '{context.project}']
+    - [ sg_status_list, not_in, ['bid', 'omt', 'hld'] ]
+    hierarchy: [sg_sequence, code]
+  - caption: My Tasks
+    entity_type: Task
+    filters:
+    - [task_assignees, is, '{context.user}']
+    - [project, is, '{context.project}']
+    - [ sg_status_list, not_in, ['bid', 'omt', 'hld'] ]
+    hierarchy: [entity, content]
+  publish_filters: [["sg_status_list", "is_not", null]]
+  location: "@apps.tk-multi-loader2.location"
+
+# after effects
+settings.tk-multi-loader2.aftereffects:
+  action_mappings:
+    After Effects Project: [add_to_project, add_to_comp]
+    Maya Scene: [add_to_project, add_to_comp]
+    Hiero Plate: [add_to_project, add_to_comp]
+    Image: [add_to_project, add_to_comp]
+    Movie: [add_to_project, add_to_comp]
+    Alembic Cache: [add_to_project, add_to_comp]
+    Alembic Camera: [add_to_project, add_to_comp]
+    FBX Camera: [add_to_project, add_to_comp]
+    Flame Render: [add_to_project, add_to_comp]
+    Flame Quicktime: [add_to_project, add_to_comp]
+    Nuke Script: [ script_import, liveGroup_node ]
+    VREF Hiero: [add_to_project, add_to_comp]
+    PRECOMP: [add_to_project, add_to_comp]
+    TECH_PRECOMP: [add_to_project, add_to_comp]
+    BG_MATTEPAINT: [add_to_project, add_to_comp]
+    IMAGE_PLANE: [add_to_project, add_to_comp]
+    PARAFX Hiero: [add_to_project, add_to_comp]
+    RENDER_MAYA: [add_to_project, add_to_comp]
+    RENDER_NUKE: [add_to_project, add_to_comp]
+    ALPHA_RENDER: [add_to_project, add_to_comp]
+    Photoshop Image: [add_to_project, add_to_comp]
+    Rendered Image: [add_to_project, add_to_comp]
+    Texture: [add_to_project, add_to_comp]
+    Hiero Audio: [add_to_project, add_to_comp]
+  entities:
+  - caption: Assets
+    entity_type: Asset
+    filters:
+    - [project, is, '{context.project}']
+    - [ sg_status_list, not_in, ['bid', 'omt', 'hld'] ]
+    hierarchy: [sg_asset_type, code]
+  - caption: Library - Assets
+    entity_type: Asset
+    filters:
+      - [ linked_projects, is, "{context.project}" ]
+    hierarchy: [ project.Project.name, sg_asset_type, code ]
+  - caption: Shots
+    entity_type: Shot
+    filters:
+    - [project, is, '{context.project}']
+    - [ sg_status_list, not_in, ['bid', 'omt', 'hld'] ]
+    hierarchy: [sg_sequence, code]
+  - caption: My Tasks
+    entity_type: Task
+    filters:
+    - [task_assignees, is, '{context.user}']
+    - [project, is, '{context.project}']
+    - [ sg_status_list, not_in, ['bid', 'omt', 'hld'] ]
+    hierarchy: [entity, content]
+  actions_hook: "{engine}/tk-multi-loader2/basic/scene_actions.py"
+  publish_filters: [["sg_status_list", "is_not", null]]
+  location: "@apps.tk-multi-loader2.location"
+
+# motion builder
+settings.tk-multi-loader2.motionbuilder:
+  entities:
+  - caption: Assets
+    entity_type: Asset
+    filters:
+    - [project, is, '{context.project}']
+    hierarchy: [sg_asset_type, code]
+  - caption: Shots
+    entity_type: Shot
+    filters:
+    - [project, is, '{context.project}']
+    hierarchy: [sg_sequence, code]
+  - caption: My Tasks
+    entity_type: Task
+    filters:
+    - [task_assignees, is, '{context.user}']
+    - [project, is, '{context.project}']
+    hierarchy: [entity, content]
+  location: "@apps.tk-multi-loader2.location"
+
+# unreal
+settings.tk-multi-loader2.unreal: "@settings.tk-multi-loader2.unreal"
+
+# alias
+settings.tk-multi-loader2.alias:
+  action_mappings:
+    Alias File: [import, import_as_reference]
+    Wref File: [reference]
+    Igs File: [import, import_as_reference]
+    Stp File: [import, import_as_reference]
+    Stl File: [import, import_as_reference]
+    Jt File: [import, import_as_reference]
+    Catpart File: [import, import_as_reference]
+    Fbx File: [import]
+    Image: [texture_node]
+    Photoshop Image: [texture_node]
+    Tif File: [texture_node]
+    Bmp File: [texture_node]
+    Obj File: [import_subdiv]
+    Tsm File: [import_subdiv]
+    F3d File: [import_subdiv]
+    Sf3d File: [import_subdiv]
+  entities:
+  - caption: Assets
+    entity_type: Asset
+    filters:
+    - [project, is, '{context.project}']
+    hierarchy: [sg_asset_type, code]
+  - caption: Assets - Linked
+    entity_type: Asset
+    filters:
+      - [linked_projects, is, "{context.project}"]
+    hierarchy: [project.Project.name, sg_asset_type, code]
+  - caption: My Tasks
+    entity_type: Task
+    filters:
+    - [task_assignees, is, '{context.user}']
+    - [project, is, '{context.project}']
+    hierarchy: [entity, content]
+  actions_hook: "{engine}/tk-multi-loader2/basic/scene_actions.py"
+  publish_filters: [["sg_status_list", "is_not", null]]
+  location: "@apps.tk-multi-loader2.location"
+
+# VRED
+settings.tk-multi-loader2.vred:
+  action_mappings:
+    Alias File: [import, import_with_options, smart_reference]
+    Igs File: [import, import_with_options, smart_reference]
+    Iges File: [ import, import_with_options, smart_reference ]
+    Stp File: [import, import_with_options, smart_reference]
+    Stl File: [import, import_with_options, smart_reference]
+    Jt File: [import, import_with_options, smart_reference]
+    Catpart File: [import, import_with_options, smart_reference]
+    Fbx File: [import, import_with_options, smart_reference]
+    VRED Scene: [import, import_with_options, smart_reference]
+    Osb File: [import, import_with_options, smart_reference]
+    Image: [import_sceneplate]
+    Rendered Image: [import_sceneplate]
+  entities:
+  - caption: Assets
+    entity_type: Asset
+    filters:
+    - [project, is, '{context.project}']
+    hierarchy: [sg_asset_type, code]
+  - caption: Assets - Linked
+    entity_type: Asset
+    filters:
+      - [linked_projects, is, "{context.project}"]
+    hierarchy: [project.Project.name, sg_asset_type, code]
+  - caption: My Tasks
+    entity_type: Task
+    filters:
+    - [task_assignees, is, '{context.user}']
+    - [project, is, '{context.project}']
+    hierarchy: [entity, content]
+  actions_hook: "{engine}/tk-multi-loader2/basic/scene_actions.py"
+  publish_filters: [["sg_status_list", "is_not", null]]
+  location: "@apps.tk-multi-loader2.location"
+
+
+#UNREAL
+settings.tk-multi-loader2.unreal:
+  action_mappings:
+    Motion Builder FBX: [ import_content, import_level ]
+    Maya FBX: [ import_content ]
+    Unreal FBX: [ import_content ]
+  actions_hook: '{engine}/tk-multi-loader2/tk-unreal_actions.py'
+  entities:
+    - caption: Assets
+      entity_type: Asset
+      filters:
+        - [ project, is, '{context.project}' ]
+      hierarchy: [ sg_asset_type, code ]
+    - caption: Shots
+      entity_type: Shot
+      filters:
+        - [ project, is, '{context.project}' ]
+      hierarchy: [ sg_sequence, code ]
+    - caption: My Tasks
+      type: Query
+      entity_type: Task
+      filters:
+        - [ project, is, '{context.project}' ]
+        - [ task_assignees, is, '{context.user}' ]
+      hierarchy: [ entity, content ]
+  publish_filters: [ [ "sg_status_list", "is_not", null ] ]
+  location: "@apps.tk-multi-loader2.location"

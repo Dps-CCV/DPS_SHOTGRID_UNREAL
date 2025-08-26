@@ -1,0 +1,50 @@
+[
+  {
+    "collection": {
+      "children": [
+        {
+          "collection": {
+            "children": [
+              {
+                "absOverride": {
+                  "attrValue": {
+                    "connectable": true, 
+                    "type": "Bool", 
+                    "value": false
+                  }, 
+                  "attribute": "renderable", 
+                  "localRender": false, 
+                  "name": "renderable", 
+                  "selfEnabled": true
+                }
+              }
+            ], 
+            "isolateSelected": false, 
+            "name": "LeaveEmpty", 
+            "selector": {
+              "simpleSelector": {
+                "customFilterValue": "", 
+                "pattern": "*", 
+                "staticSelection": "", 
+                "typeFilter": 2
+              }
+            }, 
+            "selfEnabled": true
+          }
+        }
+      ], 
+      "isolateSelected": false, 
+      "name": "Remove_Renderable_Cameras", 
+      "notes": "Set cameras as non-renderable by\nadding them to the collection.\n...\nSelect this template if your cameras\nare set as render enabled  \nin your scene.\n...\nNote:\nPerspective camera is set to be \na non-renderable camera ", 
+      "selector": {
+        "simpleSelector": {
+          "customFilterValue": "", 
+          "pattern": "", 
+          "staticSelection": "|persp", 
+          "typeFilter": 1
+        }
+      }, 
+      "selfEnabled": true
+    }
+  }
+]

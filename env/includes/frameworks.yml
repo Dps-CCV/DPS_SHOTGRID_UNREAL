@@ -1,0 +1,84 @@
+# Copyright (c) 2017 Shotgun Software Inc.
+#
+# CONFIDENTIAL AND PROPRIETARY
+#
+# This work is provided "AS IS" and subject to the Shotgun Pipeline Toolkit
+# Source Code License included in this distribution package. See LICENSE.
+# By accessing, using, copying or modifying this work you indicate your
+# agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
+# not expressly granted therein are reserved by Shotgun Software Inc.
+#
+
+################################################################################
+# A single, top-level setting is defined: "@frameworks". This setting can
+# be included and referenced wherever shared frameworks are required.
+
+frameworks:
+  # adobe - Common functionality for adobe products
+  tk-framework-adobe_v1.x.x:
+    location:
+      type: app_store
+      name: tk-framework-adobe
+      version: v1.1.5
+  tk-framework-adminui_v0.x.x:
+    location:
+      version: v0.7.2
+      type: app_store
+      name: tk-framework-adminui
+  tk-framework-alias_v1.x.x:
+    location:
+      version: v1.4.0
+      type: app_store
+      name: tk-framework-alias
+  tk-framework-aliastranslations_v0.x.x:
+    location:
+      type: app_store
+      name: tk-framework-aliastranslations
+      version: v0.2.2
+  tk-framework-desktopserver_v1.x.x:
+    location:
+      type: app_store
+      name: tk-framework-desktopserver
+      version: v1.5.3
+  tk-framework-qtwidgets_v2.x.x:
+    location:
+      type: app_store
+      name: tk-framework-qtwidgets
+      version: v2.10.3
+  tk-framework-shotgunutils_v4.x.x:
+    location:
+      version: v4.4.15
+      type: app_store
+      name: tk-framework-shotgunutils
+  tk-framework-shotgunutils_v5.x.x:
+    location:
+      type: app_store
+      name: tk-framework-shotgunutils
+      version: v5.8.5
+  tk-framework-widget_v0.2.x:
+    location:
+      version: v0.2.8
+      type: app_store
+      name: tk-framework-widget
+  tk-framework-widget_v1.x.x:
+    location:
+      type: app_store
+      name: tk-framework-widget
+      version: v1.1.1
+  tk-framework-desktopclient_v0.x.x:
+    location:
+      type: app_store
+      name: tk-framework-desktopclient
+      version: v0.3.2
+  tk-framework-lmv_v0.x.x:
+    location:
+      version: v0.2.2
+      type: app_store
+      name: tk-framework-lmv
+#  tk-framework-lmv_v1.x.x:
+#    location:
+#      version: v1.1.0
+#      type: app_store
+#      name: tk-framework-lmv
+
+include: unreal/frameworks.yml

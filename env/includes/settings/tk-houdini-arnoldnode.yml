@@ -1,0 +1,52 @@
+# Copyright (c) 2017 Shotgun Software Inc.
+#
+# CONFIDENTIAL AND PROPRIETARY
+#
+# This work is provided "AS IS" and subject to the Shotgun Pipeline Toolkit
+# Source Code License included in this distribution package. See LICENSE.
+# By accessing, using, copying or modifying this work you indicate your
+# agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
+# not expressly granted therein are reserved by Shotgun Software Inc.
+
+################################################################################
+
+includes:
+- ../app_locations.yml
+
+################################################################################
+
+settings.tk-houdini-arnoldnode.asset_step:
+  work_file_template: houdini_asset_work
+  default_node_name: sgArnoldOut
+  output_profiles:
+  - name: Asset Work Arnold
+    settings: { }
+    color: [ ]
+    output_render_template: houdini_asset_render
+    output_aov_render_template: houdini_asset_extra_plane
+    output_backup_render_template: houdini_asset_backup_hip
+    output_ass_template: houdini_asset_work_cache
+    output_ass_seq_template: houdini_asset_work_seq_cache
+    output_publish_render: houdini_asset_pub_render
+    output_publish_aov: houdini_asset_pub_extra_plane
+    output_publish_ass: houdini_asset_publish_cache
+    output_publish_seq_ass: houdini_asset_publish_seq_cache
+  location: "@apps.tk-houdini-arnoldnode.location"
+
+settings.tk-houdini-arnoldnode.shot_step:
+  work_file_template: houdini_shot_work
+  default_node_name: sgArnoldOut
+  output_profiles:
+  - name: Shot Work Arnold
+    settings: { }
+    color: [ ]
+    output_render_template: houdini_shot_render
+    output_aov_render_template: houdini_shot_extra_plane
+    output_backup_render_template: houdini_shot_backup_hip
+    output_ass_template: houdini_shot_work_cache
+    output_ass_seq_template: houdini_shot_work_seq_cache
+    output_publish_render: houdini_shot_pub_render
+    output_publish_aov: houdini_shot_pub_extra_plane
+    output_publish_ass: houdini_shot_publish_cache
+    output_publish_seq_ass: houdini_shot_publish_seq_cache
+  location: "@apps.tk-houdini-arnoldnode.location"

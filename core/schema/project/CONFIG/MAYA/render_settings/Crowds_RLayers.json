@@ -1,0 +1,975 @@
+[
+  {
+    "renderSetupLayer": {
+      "collections": [
+        {
+          "collection": {
+            "children": [
+              {
+                "collection": {
+                  "children": [
+                    {
+                      "absOverride": {
+                        "attrValue": {
+                          "connectable": true,
+                          "type": "Bool",
+                          "value": false
+                        },
+                        "attribute": "primaryVisibility",
+                        "localRender": false,
+                        "name": "primaryVisibility",
+                        "selfEnabled": true
+                      }
+                    }
+                  ],
+                  "isolateSelected": false,
+                  "name": "Estadio1_shapes",
+                  "selector": {
+                    "simpleSelector": {
+                      "customFilterValue": "",
+                      "pattern": "*",
+                      "previousPattern": "*",
+                      "staticSelection": "",
+                      "typeFilter": 2
+                    }
+                  },
+                  "selfEnabled": true
+                }
+              },
+              {
+                "collection": {
+                  "children": [
+                    {
+                      "shaderOverride": {
+                        "attribute": "",
+                        "connectionStr": "aiStandardSurface16.outColor",
+                        "localRender": false,
+                        "name": "shaderOverride2",
+                        "selfEnabled": true
+                      }
+                    }
+                  ],
+                  "isolateSelected": false,
+                  "name": "Agentes1_shadingEngines",
+                  "selector": {
+                    "simpleSelector": {
+                      "customFilterValue": "",
+                      "pattern": "*",
+                      "previousPattern": "",
+                      "staticSelection": "",
+                      "typeFilter": 11
+                    }
+                  },
+                  "selfEnabled": true
+                }
+              }
+            ],
+            "expandedState": false,
+            "isolateSelected": false,
+            "name": "Agentes1",
+            "selector": {
+              "simpleSelector": {
+                "customFilterValue": "",
+                "pattern": "Agentes*",
+                "previousPattern": "Agentes*",
+                "staticSelection": "",
+                "typeFilter": 1
+              }
+            },
+            "selfEnabled": true
+          }
+        },
+        {
+          "collection": {
+            "children": [
+              {
+                "collection": {
+                  "children": [
+                    {
+                      "absOverride": {
+                        "attrValue": {
+                          "connectable": true,
+                          "type": "Bool",
+                          "value": false
+                        },
+                        "attribute": "aiSelfShadows",
+                        "localRender": false,
+                        "name": "aiSelfShadows",
+                        "selfEnabled": true
+                      }
+                    },
+                    {
+                      "absOverride": {
+                        "attrValue": {
+                          "connectable": true,
+                          "type": "Bool",
+                          "value": true
+                        },
+                        "attribute": "primaryVisibility",
+                        "localRender": false,
+                        "name": "primaryVisibility7",
+                        "selfEnabled": true
+                      }
+                    }
+                  ],
+                  "isolateSelected": false,
+                  "name": "Asientos_shapes",
+                  "selector": {
+                    "simpleSelector": {
+                      "customFilterValue": "",
+                      "pattern": "*",
+                      "previousPattern": "*",
+                      "staticSelection": "",
+                      "typeFilter": 2
+                    }
+                  },
+                  "selfEnabled": true
+                }
+              },
+              {
+                "collection": {
+                  "children": [
+                    {
+                      "shaderOverride": {
+                        "attribute": "",
+                        "connectionStr": "aiRaySwitch1.outColor",
+                        "localRender": false,
+                        "name": "shaderOverride9",
+                        "selfEnabled": true
+                      }
+                    }
+                  ],
+                  "isolateSelected": false,
+                  "name": "Asientos_shadingEngines",
+                  "selector": {
+                    "simpleSelector": {
+                      "customFilterValue": "",
+                      "pattern": "*",
+                      "previousPattern": "",
+                      "staticSelection": "",
+                      "typeFilter": 11
+                    }
+                  },
+                  "selfEnabled": true
+                }
+              }
+            ],
+            "isolateSelected": false,
+            "name": "Asientos",
+            "selector": {
+              "simpleSelector": {
+                "customFilterValue": "",
+                "pattern": "Asientos*",
+                "previousPattern": "Asientos*",
+                "staticSelection": "",
+                "typeFilter": 1
+              }
+            },
+            "selfEnabled": true
+          }
+        }
+      ],
+      "expandedState": false,
+      "name": "Shadows_Gente",
+      "renderable": true
+    }
+  },
+  {
+    "renderSetupLayer": {
+      "collections": [
+        {
+          "collection": {
+            "children": [
+              {
+                "collection": {
+                  "children": [
+                    {
+                      "absOverride": {
+                        "attrValue": {
+                          "connectable": true,
+                          "type": "Bool",
+                          "value": false
+                        },
+                        "attribute": "primaryVisibility",
+                        "localRender": false,
+                        "name": "primaryVisibility1",
+                        "selfEnabled": true
+                      }
+                    }
+                  ],
+                  "expandedState": false,
+                  "isolateSelected": false,
+                  "name": "Globos_shapes",
+                  "selector": {
+                    "simpleSelector": {
+                      "customFilterValue": "",
+                      "pattern": "*",
+                      "previousPattern": "*",
+                      "staticSelection": "",
+                      "typeFilter": 2
+                    }
+                  },
+                  "selfEnabled": true
+                }
+              },
+              {
+                "absOverride": {
+                  "attrValue": {
+                    "connectable": true,
+                    "keyable": true,
+                    "type": "Bool",
+                    "value": true
+                  },
+                  "attribute": "visibility",
+                  "localRender": false,
+                  "name": "visibility5",
+                  "selfEnabled": true
+                }
+              }
+            ],
+            "isolateSelected": false,
+            "name": "Globos",
+            "selector": {
+              "simpleSelector": {
+                "customFilterValue": "",
+                "pattern": "GLOBOS*",
+                "previousPattern": "GLOBOS*",
+                "staticSelection": "",
+                "typeFilter": 1
+              }
+            },
+            "selfEnabled": true
+          }
+        },
+        {
+          "collection": {
+            "children": [
+              {
+                "collection": {
+                  "children": [
+                    {
+                      "shaderOverride": {
+                        "attribute": "",
+                        "connectionStr": "aiShadowMatte3.outColor",
+                        "localRender": false,
+                        "name": "shaderOverride1",
+                        "selfEnabled": true
+                      }
+                    }
+                  ],
+                  "expandedState": false,
+                  "isolateSelected": false,
+                  "name": "collection5_shadingEngines",
+                  "selector": {
+                    "simpleSelector": {
+                      "customFilterValue": "",
+                      "pattern": "*",
+                      "previousPattern": "*",
+                      "staticSelection": "",
+                      "typeFilter": 11
+                    }
+                  },
+                  "selfEnabled": true
+                }
+              },
+              {
+                "collection": {
+                  "children": [
+                    {
+                      "absOverride": {
+                        "attrValue": {
+                          "connectable": true,
+                          "type": "Bool",
+                          "value": true
+                        },
+                        "attribute": "primaryVisibility",
+                        "localRender": false,
+                        "name": "primaryVisibility2",
+                        "selfEnabled": true
+                      }
+                    },
+                    {
+                      "absOverride": {
+                        "attrValue": {
+                          "connectable": true,
+                          "type": "Bool",
+                          "value": false
+                        },
+                        "attribute": "castsShadows",
+                        "localRender": false,
+                        "name": "castsShadows",
+                        "selfEnabled": true
+                      }
+                    }
+                  ],
+                  "expandedState": false,
+                  "isolateSelected": false,
+                  "name": "Suelo1_shapes",
+                  "selector": {
+                    "simpleSelector": {
+                      "customFilterValue": "",
+                      "pattern": "*",
+                      "previousPattern": "*",
+                      "staticSelection": "",
+                      "typeFilter": 2
+                    }
+                  },
+                  "selfEnabled": true
+                }
+              },
+              {
+                "absOverride": {
+                  "attrValue": {
+                    "connectable": true,
+                    "keyable": true,
+                    "type": "Bool",
+                    "value": true
+                  },
+                  "attribute": "visibility",
+                  "localRender": false,
+                  "name": "visibility",
+                  "selfEnabled": true
+                }
+              }
+            ],
+            "isolateSelected": false,
+            "name": "Suelo1",
+            "selector": {
+              "simpleSelector": {
+                "customFilterValue": "",
+                "pattern": "Suelo* , Pared_fondo_rflx",
+                "previousPattern": "Suelo* , Pared_fondo_rflx",
+                "staticSelection": "",
+                "typeFilter": 1
+              }
+            },
+            "selfEnabled": true
+          }
+        }
+      ],
+      "expandedState": false,
+      "name": "Shadows_Globos",
+      "renderable": true
+    }
+  },
+  {
+    "renderSetupLayer": {
+      "collections": [
+        {
+          "collection": {
+            "children": [
+              {
+                "collection": {
+                  "children": [
+                    {
+                      "absOverride": {
+                        "attrValue": {
+                          "connectable": true,
+                          "type": "Bool",
+                          "value": false
+                        },
+                        "attribute": "primaryVisibility",
+                        "localRender": false,
+                        "name": "primaryVisibility3",
+                        "selfEnabled": true
+                      }
+                    }
+                  ],
+                  "isolateSelected": false,
+                  "name": "Globos_shapes1",
+                  "selector": {
+                    "simpleSelector": {
+                      "customFilterValue": "",
+                      "pattern": "*",
+                      "previousPattern": "*",
+                      "staticSelection": "",
+                      "typeFilter": 2
+                    }
+                  },
+                  "selfEnabled": true
+                }
+              },
+              {
+                "absOverride": {
+                  "attrValue": {
+                    "connectable": true,
+                    "keyable": true,
+                    "type": "Bool",
+                    "value": true
+                  },
+                  "attribute": "visibility",
+                  "localRender": false,
+                  "name": "visibility6",
+                  "selfEnabled": true
+                }
+              },
+              {
+                "collection": {
+                  "children": [
+                    {
+                      "collection": {
+                        "children": [
+                          {
+                            "absOverride": {
+                              "attrValue": {
+                                "connectable": true,
+                                "type": "Bool",
+                                "value": false
+                              },
+                              "attribute": "primaryVisibility",
+                              "localRender": false,
+                              "name": "primaryVisibility10",
+                              "selfEnabled": true
+                            }
+                          }
+                        ],
+                        "isolateSelected": false,
+                        "name": "Globos_shapes3",
+                        "selector": {
+                          "simpleSelector": {
+                            "customFilterValue": "",
+                            "pattern": "*",
+                            "previousPattern": "*",
+                            "staticSelection": "",
+                            "typeFilter": 2
+                          }
+                        },
+                        "selfEnabled": true
+                      }
+                    },
+                    {
+                      "absOverride": {
+                        "attrValue": {
+                          "connectable": true,
+                          "keyable": true,
+                          "type": "Bool",
+                          "value": true
+                        },
+                        "attribute": "visibility",
+                        "localRender": false,
+                        "name": "visibility8",
+                        "selfEnabled": true
+                      }
+                    }
+                  ],
+                  "isolateSelected": false,
+                  "name": "Globos3",
+                  "selector": {
+                    "simpleSelector": {
+                      "customFilterValue": "",
+                      "pattern": "GLOBOS*",
+                      "previousPattern": "GLOBOS*",
+                      "staticSelection": "",
+                      "typeFilter": 1
+                    }
+                  },
+                  "selfEnabled": true
+                }
+              }
+            ],
+            "isolateSelected": false,
+            "name": "Globos1",
+            "selector": {
+              "simpleSelector": {
+                "customFilterValue": "",
+                "pattern": "GLOBOS*",
+                "previousPattern": "GLOBOS*",
+                "staticSelection": "",
+                "typeFilter": 1
+              }
+            },
+            "selfEnabled": true
+          }
+        },
+        {
+          "collection": {
+            "children": [
+              {
+                "collection": {
+                  "children": [
+                    {
+                      "shaderOverride": {
+                        "attribute": "",
+                        "connectionStr": "aiStandardSurface17.outColor",
+                        "localRender": false,
+                        "name": "shaderOverride5",
+                        "selfEnabled": true
+                      }
+                    }
+                  ],
+                  "isolateSelected": false,
+                  "name": "collection5_shadingEngines1",
+                  "selector": {
+                    "simpleSelector": {
+                      "customFilterValue": "",
+                      "pattern": "*",
+                      "previousPattern": "*",
+                      "staticSelection": "",
+                      "typeFilter": 11
+                    }
+                  },
+                  "selfEnabled": true
+                }
+              },
+              {
+                "absOverride": {
+                  "attrValue": {
+                    "connectable": true,
+                    "keyable": true,
+                    "type": "Bool",
+                    "value": true
+                  },
+                  "attribute": "visibility",
+                  "localRender": false,
+                  "name": "visibility1",
+                  "selfEnabled": true
+                }
+              },
+              {
+                "collection": {
+                  "children": [
+                    {
+                      "absOverride": {
+                        "attrValue": {
+                          "connectable": true,
+                          "type": "Bool",
+                          "value": true
+                        },
+                        "attribute": "primaryVisibility",
+                        "localRender": false,
+                        "name": "primaryVisibility8",
+                        "selfEnabled": true
+                      }
+                    }
+                  ],
+                  "isolateSelected": false,
+                  "name": "Paredes_shapes",
+                  "selector": {
+                    "simpleSelector": {
+                      "customFilterValue": "",
+                      "pattern": "*",
+                      "previousPattern": "",
+                      "staticSelection": "",
+                      "typeFilter": 2
+                    }
+                  },
+                  "selfEnabled": true
+                }
+              }
+            ],
+            "expandedState": false,
+            "isolateSelected": false,
+            "name": "Paredes",
+            "selector": {
+              "simpleSelector": {
+                "customFilterValue": "",
+                "pattern": "Pared_fondo_rflx",
+                "previousPattern": "Pared_fondo_rflx",
+                "staticSelection": "",
+                "typeFilter": 1
+              }
+            },
+            "selfEnabled": true
+          }
+        }
+      ],
+      "expandedState": false,
+      "name": "Rflx_Globos",
+      "renderable": true
+    }
+  },
+  {
+    "renderSetupLayer": {
+      "collections": [
+        {
+          "collection": {
+            "children": [
+              {
+                "collection": {
+                  "children": [
+                    {
+                      "absOverride": {
+                        "attrValue": {
+                          "connectable": true,
+                          "type": "Bool",
+                          "value": false
+                        },
+                        "attribute": "primaryVisibility",
+                        "localRender": false,
+                        "name": "primaryVisibility5",
+                        "selfEnabled": true
+                      }
+                    }
+                  ],
+                  "expandedState": false,
+                  "isolateSelected": false,
+                  "name": "Globos_shapes2",
+                  "selector": {
+                    "simpleSelector": {
+                      "customFilterValue": "",
+                      "pattern": "*",
+                      "previousPattern": "*",
+                      "staticSelection": "",
+                      "typeFilter": 2
+                    }
+                  },
+                  "selfEnabled": true
+                }
+              },
+              {
+                "collection": {
+                  "children": [
+                    {
+                      "shaderOverride": {
+                        "attribute": "",
+                        "connectionStr": "aiFlat18.outColor",
+                        "localRender": false,
+                        "name": "shaderOverride8",
+                        "selfEnabled": true
+                      }
+                    }
+                  ],
+                  "isolateSelected": false,
+                  "name": "Globos2_shadingEngines",
+                  "selector": {
+                    "simpleSelector": {
+                      "customFilterValue": "",
+                      "pattern": "*",
+                      "previousPattern": "",
+                      "staticSelection": "",
+                      "typeFilter": 11
+                    }
+                  },
+                  "selfEnabled": true
+                }
+              }
+            ],
+            "isolateSelected": false,
+            "name": "Globos2",
+            "selector": {
+              "simpleSelector": {
+                "customFilterValue": "",
+                "pattern": "GLOBOS*",
+                "previousPattern": "GLOBOS*",
+                "staticSelection": "",
+                "typeFilter": 1
+              }
+            },
+            "selfEnabled": true
+          }
+        },
+        {
+          "collection": {
+            "children": [
+              {
+                "collection": {
+                  "children": [
+                    {
+                      "shaderOverride": {
+                        "attribute": "",
+                        "connectionStr": "aiStandardSurface17.outColor",
+                        "localRender": false,
+                        "name": "shaderOverride6",
+                        "selfEnabled": true
+                      }
+                    }
+                  ],
+                  "isolateSelected": false,
+                  "name": "collection5_shadingEngines2",
+                  "selector": {
+                    "simpleSelector": {
+                      "customFilterValue": "",
+                      "pattern": "*",
+                      "previousPattern": "*",
+                      "staticSelection": "",
+                      "typeFilter": 11
+                    }
+                  },
+                  "selfEnabled": true
+                }
+              },
+              {
+                "absOverride": {
+                  "attrValue": {
+                    "connectable": true,
+                    "keyable": true,
+                    "type": "Bool",
+                    "value": true
+                  },
+                  "attribute": "visibility",
+                  "localRender": false,
+                  "name": "visibility2",
+                  "selfEnabled": true
+                }
+              },
+              {
+                "collection": {
+                  "children": [
+                    {
+                      "absOverride": {
+                        "attrValue": {
+                          "connectable": true,
+                          "type": "Bool",
+                          "value": true
+                        },
+                        "attribute": "primaryVisibility",
+                        "localRender": false,
+                        "name": "primaryVisibility9",
+                        "selfEnabled": true
+                      }
+                    }
+                  ],
+                  "isolateSelected": false,
+                  "name": "Paredes1_shapes",
+                  "selector": {
+                    "simpleSelector": {
+                      "customFilterValue": "",
+                      "pattern": "*",
+                      "previousPattern": "",
+                      "staticSelection": "",
+                      "typeFilter": 2
+                    }
+                  },
+                  "selfEnabled": true
+                }
+              }
+            ],
+            "expandedState": false,
+            "isolateSelected": false,
+            "name": "Paredes1",
+            "selector": {
+              "simpleSelector": {
+                "customFilterValue": "",
+                "pattern": "Pared_fondo_rflx",
+                "previousPattern": "Pared_fondo_rflx",
+                "staticSelection": "",
+                "typeFilter": 1
+              }
+            },
+            "selfEnabled": true
+          }
+        },
+        {
+          "collection": {
+            "children": [
+              {
+                "absOverride": {
+                  "attrValue": {
+                    "connectable": true,
+                    "keyable": true,
+                    "type": "Bool",
+                    "value": false
+                  },
+                  "attribute": "visibility",
+                  "localRender": false,
+                  "name": "visibility4",
+                  "selfEnabled": true
+                }
+              }
+            ],
+            "isolateSelected": false,
+            "name": "collection7",
+            "selector": {
+              "simpleSelector": {
+                "customFilterValue": "",
+                "pattern": "LGT_grp",
+                "previousPattern": "LGT_grp",
+                "staticSelection": "",
+                "typeFilter": 1
+              }
+            },
+            "selfEnabled": true
+          }
+        },
+        {
+          "collection": {
+            "children": [
+              {
+                "absOverride": {
+                  "attrValue": {
+                    "connectable": true,
+                    "keyable": true,
+                    "type": "Bool",
+                    "value": true
+                  },
+                  "attribute": "visibility",
+                  "localRender": false,
+                  "name": "visibility7",
+                  "selfEnabled": true
+                }
+              }
+            ],
+            "isolateSelected": false,
+            "name": "_GLOBOS_col",
+            "selector": {
+              "simpleSelector": {
+                "customFilterValue": "",
+                "pattern": "",
+                "previousPattern": "",
+                "staticSelection": "|GLOBOS",
+                "typeFilter": 1
+              }
+            },
+            "selfEnabled": true
+          }
+        }
+      ],
+      "expandedState": false,
+      "name": "Rflx_msk",
+      "renderable": true
+    }
+  },
+  {
+    "renderSetupLayer": {
+      "collections": [
+        {
+          "collection": {
+            "children": [
+              {
+                "collection": {
+                  "children": [
+                    {
+                      "absOverride": {
+                        "attrValue": {
+                          "connectable": true,
+                          "type": "Bool",
+                          "value": false
+                        },
+                        "attribute": "primaryVisibility",
+                        "localRender": false,
+                        "name": "primaryVisibility12",
+                        "selfEnabled": true
+                      }
+                    }
+                  ],
+                  "isolateSelected": false,
+                  "name": "collection11_shapes",
+                  "selector": {
+                    "simpleSelector": {
+                      "customFilterValue": "",
+                      "pattern": "*",
+                      "previousPattern": "",
+                      "staticSelection": "",
+                      "typeFilter": 2
+                    }
+                  },
+                  "selfEnabled": true
+                }
+              }
+            ],
+            "isolateSelected": false,
+            "name": "collection11",
+            "selector": {
+              "simpleSelector": {
+                "customFilterValue": "",
+                "pattern": "Asientos_geo Pared_fondo_rflx",
+                "previousPattern": "Asientos_geo Pared_fondo_rflx",
+                "staticSelection": "",
+                "typeFilter": 1
+              }
+            },
+            "selfEnabled": true
+          }
+        },
+        {
+          "collection": {
+            "children": [
+              {
+                "absOverride": {
+                  "attrValue": {
+                    "connectable": true,
+                    "keyable": true,
+                    "type": "Bool",
+                    "value": true
+                  },
+                  "attribute": "visibility",
+                  "localRender": false,
+                  "name": "visibility9",
+                  "selfEnabled": true
+                }
+              }
+            ],
+            "expandedState": false,
+            "isolateSelected": false,
+            "name": "collection9",
+            "selector": {
+              "simpleSelector": {
+                "customFilterValue": "",
+                "pattern": "GLOBOS",
+                "previousPattern": "GLOBOS",
+                "staticSelection": "",
+                "typeFilter": 1
+              }
+            },
+            "selfEnabled": true
+          }
+        },
+        {
+          "collection": {
+            "children": [
+              {
+                "collection": {
+                  "children": [
+                    {
+                      "absOverride": {
+                        "attrValue": {
+                          "connectable": true,
+                          "type": "Bool",
+                          "value": true
+                        },
+                        "attribute": "primaryVisibility",
+                        "localRender": false,
+                        "name": "primaryVisibility11",
+                        "selfEnabled": true
+                      }
+                    },
+                    {
+                      "absOverride": {
+                        "attrValue": {
+                          "connectable": true,
+                          "type": "Bool",
+                          "value": true
+                        },
+                        "attribute": "aiMatte",
+                        "localRender": false,
+                        "name": "aiMatte",
+                        "selfEnabled": true
+                      }
+                    }
+                  ],
+                  "isolateSelected": false,
+                  "name": "collection10_shapes",
+                  "selector": {
+                    "simpleSelector": {
+                      "customFilterValue": "",
+                      "pattern": "*",
+                      "previousPattern": "*",
+                      "staticSelection": "",
+                      "typeFilter": 2
+                    }
+                  },
+                  "selfEnabled": true
+                }
+              }
+            ],
+            "isolateSelected": false,
+            "name": "collection10",
+            "selector": {
+              "simpleSelector": {
+                "customFilterValue": "",
+                "pattern": "Suelo",
+                "previousPattern": "Suelo",
+                "staticSelection": "",
+                "typeFilter": 1
+              }
+            },
+            "selfEnabled": true
+          }
+        }
+      ],
+      "expandedState": false,
+      "name": "Beauty_Globos",
+      "renderable": true
+    }
+  }
+]

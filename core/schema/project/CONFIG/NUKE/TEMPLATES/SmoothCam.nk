@@ -1,0 +1,144 @@
+set cut_paste_input [stack 0]
+version 13.2 v3
+BackdropNode {
+inputs 0
+name BackdropNode23
+tile_color 0x445554ff
+label "<center><img src=\"CameraShake.png\">SmoothCam"
+note_font_size 100
+note_font_color 0xffffffff
+selected true
+xpos 2675
+ypos 314
+bdwidth 781
+bdheight 572
+}
+push $cut_paste_input
+NoOp {
+name Integral1
+tile_color 0x3589e2ff
+selected true
+xpos 2813
+ypos 654
+addUserKnob {20 Suavizar_integral}
+addUserKnob {13 IT l Translacion}
+IT {{"this.input.translate.x.integrate(frame-this.ValorTX, frame+this.ValorTX)/((frame+this.ValorTX)-(frame-this.ValorTX))" i} {"this.input.translate.y.integrate(frame-this.ValorTY, frame+this.ValorTY)/((frame+this.ValorTY)-(frame-this.ValorTY))" i} {"this.input.translate.z.integrate(frame-this.ValorTZ, frame+this.ValorTZ)/((frame+this.ValorTZ)-(frame-this.ValorTZ))" i}}
+addUserKnob {13 IR l Rotacion}
+IR {{"this.input.rotate.x.integrate(frame-this.ValorRX, frame+this.ValorRX)/((frame+this.ValorRX)-(frame-this.ValorRX))"} {"this.input.rotate.y.integrate(frame-this.ValorRY, frame+this.ValorRY)/((frame+this.ValorRY)-(frame-this.ValorRY))"} {"this.input.rotate.z.integrate(frame-this.ValorRZ, frame+this.ValorRZ)/((frame+this.ValorRZ)-(frame-this.ValorRZ))"}}
+addUserKnob {26 ""}
+addUserKnob {26 Translacion l "" +STARTLINE T Translacion}
+addUserKnob {7 ValorTX R 1 15}
+ValorTX 4
+addUserKnob {7 ValorTY R 1 15}
+ValorTY 4
+addUserKnob {7 ValorTZ R 1 15}
+ValorTZ 4
+addUserKnob {26 ""}
+addUserKnob {26 Rotacion l "" +STARTLINE T Rotacion}
+addUserKnob {7 ValorRX R 1 15}
+ValorRX 4.25
+addUserKnob {7 ValorRY R 1 15}
+ValorRY 4
+addUserKnob {7 ValorRZ R 1 15}
+ValorRZ 4
+addUserKnob {26 ""}
+addUserKnob {26 ParametrosCamera l "" +STARTLINE T "Parametros Camara"}
+addUserKnob {7 Focal l "Focal Length"}
+Focal {{this.input.focal i x193 49.26421146}}
+addUserKnob {7 Haperture l "H aperture"}
+Haperture {{this.input.haperture i}}
+addUserKnob {7 Z}
+Z {{this.input.far i}}
+}
+Camera2 {
+inputs 0
+translate {{parent.Integral1.IT} {parent.Integral1.IT} {parent.Integral1.IT}}
+rotate {{parent.Integral1.IR} {parent.Integral1.IR} {parent.Integral1.IR}}
+focal {{parent.Integral1.Focal}}
+haperture {{parent.Integral1.Haperture}}
+far {{parent.Integral1.Z}}
+name Camera1
+tile_color 0x3589e2ff
+selected true
+xpos 2942
+ypos 634
+}
+set N66385400 [stack 0]
+push $N66385400
+Project3D2 {
+inputs 0
+name Project3D4
+tile_color 0x3589e2ff
+selected true
+xpos 3042
+ypos 489
+}
+Card2 {
+rows 1
+columns 1
+z {{parent.Integral1.Z}}
+lens_in_focal {{parent.Integral1.Focal}}
+lens_in_haperture {{parent.Integral1.Haperture}}
+translate {{parent.Integral1.IT} {parent.Integral1.IT} {parent.Integral1.IT}}
+rotate {{parent.Integral1.IR} {parent.Integral1.IR} {parent.Integral1.IR}}
+uniform_scale 0.9
+control_points {3 3 3 6 
+
+1 {-0.5 -0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0 0 0} 
+1 {0 -0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0.5 0 0} 
+1 {0.5 -0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {1 0 0} 
+1 {-0.5 0 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0 0.5 0} 
+1 {0 0 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0.5 0.5 0} 
+1 {0.5 0 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {1 0.5 0} 
+1 {-0.5 0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0 1 0} 
+1 {0 0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0.5 1 0} 
+1 {0.5 0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {1 1 0} }
+name Card4
+tile_color 0x3589e2ff
+selected true
+xpos 3042
+ypos 535
+}
+Scene {
+inputs 2
+name Scene1
+tile_color 0x3589e2ff
+selected true
+xpos 3052
+ypos 634
+}
+Constant {
+inputs 0
+channels rgb
+color {1 0 0 0}
+name Constant2
+selected true
+xpos 3186
+ypos 716
+}
+ScanlineRender {
+inputs 3
+antialiasing low
+motion_vectors_type off
+name ScanlineRender1
+tile_color 0x3589e2ff
+selected true
+xpos 3042
+ypos 739
+}
+Remove {
+channels depth
+name Remove3
+tile_color 0x3589e2ff
+selected true
+xpos 3042
+ypos 784
+}
+Transform {
+center {1024 576}
+name Transform2
+tile_color 0x3589e2ff
+selected true
+xpos 3042
+ypos 839
+}

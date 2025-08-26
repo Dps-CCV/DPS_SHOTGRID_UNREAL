@@ -1,0 +1,73 @@
+# Copyright (c) 2017 Shotgun Software Inc.
+#
+# CONFIDENTIAL AND PROPRIETARY
+#
+# This work is provided "AS IS" and subject to the Shotgun Pipeline Toolkit
+# Source Code License included in this distribution package. See LICENSE.
+# By accessing, using, copying or modifying this work you indicate your
+# agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
+# not expressly granted therein are reserved by Shotgun Software Inc.
+
+################################################################################
+
+includes:
+- ../app_locations.yml
+
+################################################################################
+
+# ---- Nuke
+
+# asset
+settings.tk-multi-reviewsubmission.nuke.asset:
+  movie_path_template: nuke_asset_render_movie
+  slate_logo: "icons/logo-cuadrado-white-HD.png"
+  location: "@apps.tk-multi-reviewsubmission.location"
+  render_media_hook: '{self}/render_media.py:{config}/tk-multi-reviewsubmission/nuke/render_media.py'
+
+
+# shot
+settings.tk-multi-reviewsubmission.nuke.shot:
+  movie_path_template: nuke_shot_render_movie
+  movie_width: 1920
+  movie_height: 1080
+  slate_logo: "icons/logo-cuadrado-white-HD.png"
+  location: "@apps.tk-multi-reviewsubmission.location"
+  render_media_hook: '{self}/render_media.py:{config}/tk-multi-reviewsubmission/nuke/render_media.py'
+  ## {self}/render_media.py:{config}/tk-multi-reviewsubmission/nuke/render_media.py
+
+# ---- Maya
+
+# Maya Playblast
+settings.tk-multi-reviewsubmission.maya:
+  display_name: Playblast to Create
+  slate_logo: "icons/logo-cuadrado-white-HD.png"
+  render_media_hook: '{self}/render_media.py:{self}/{engine_name}/render_media.py'
+  submitter_hook: '{self}/submitter_sgtk.py'
+  location: "@apps.tk-multi-reviewsubmission.location"
+
+# asset_step
+settings.tk-multi-reviewsubmission.maya.asset_step:
+  display_name: Playblast to Create
+  movie_path_template: maya_asset_playblast_publish
+  slate_logo: "icons/logo-cuadrado-white-HD.png"
+  render_media_hook: '{self}/render_media.py:{self}/{engine_name}/render_media.py'
+  submitter_hook: '{self}/submitter_sgtk.py'
+  location: "@apps.tk-multi-reviewsubmission.location"
+
+
+# shot_step
+settings.tk-multi-reviewsubmission.maya.shot_step:
+  display_name: Playblast to Create
+#  movie_path_template: maya_shot_playblast_publish
+  slate_logo: "icons/logo-cuadrado-white-HD.png"
+  upload_to_shotgun: true
+  render_media_hook: '{self}/render_media.py:{self}/{engine_name}/render_media.py'
+  submitter_hook: '{self}/submitter_sgtk.py'
+  location: "@apps.tk-multi-reviewsubmission.location"
+
+# Photoshop Submit for review
+settings.tk-multi-reviewsubmission.photoshop:
+  display_name: Send for review
+  render_media_hook: '{self}/render_media.py:{self}/{engine_name}/render_media.py'
+  submitter_hook: '{self}/submitter_sgtk.py'
+  location: "@apps.tk-multi-reviewsubmission.location"

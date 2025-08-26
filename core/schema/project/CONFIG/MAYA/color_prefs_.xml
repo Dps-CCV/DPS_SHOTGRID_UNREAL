@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ColorManagement version="1.5">
+    <Parameter name="OCIOConfigFile" value="V:/EL_METODO/CONFIG/COLOR/ACES_1.1/config.ocio" />
+    <Parameter name="OCIORulesEnabled" value="true" />
+    <Parameter name="applyPlayblastOutputTransform" value="true" />
+    <Parameter name="isApplyOutputTransformEnabled" value="false" />
+    <Parameter name="isCMEnabled" value="true" />
+    <Parameter name="isOCIOEnabled" value="true" />
+    <Parameter name="outputTransform" value="sRGB (ACES)" />
+    <Parameter name="outputTransformUseColorConversion" value="false" />
+    <Parameter name="outputTransformUseViewTransform" value="true" />
+    <Parameter name="playblastOutputTransform" value="sRGB (ACES)" />
+    <Parameter name="playblastOutputTransformUseColorConversion" value="false" />
+    <Parameter name="playblastOutputTransformUseViewTransform" value="true" />
+    <Parameter name="renderingSpace" value="ACES - ACEScg" />
+    <Parameter name="userRules" value='&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;rules version=&quot;1.0&quot;&gt;&#x09;&lt;default colorSpace=&quot;ACES - ACES2065-1&quot;/&gt;&#x09;&lt;opaque /&gt;&lt;/rules&gt;' />
+    <Parameter name="userTransformPath" value="C:/Users/dps9/Documents/maya/synColor/Shared/" />
+    <Parameter name="viewTransform" value="sRGB (ACES)" />
+</ColorManagement>

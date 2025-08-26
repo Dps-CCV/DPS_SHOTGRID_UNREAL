@@ -1,0 +1,97 @@
+set cut_paste_input [stack 0]
+version 13.2 v3
+Dot {
+ inputs 0
+ name Dot15
+ selected true
+ xpos 3051
+ ypos 1498
+}
+set N7ee7ec00 [stack 0]
+Dot {
+ name Dot16
+ selected true
+ xpos 3051
+ ypos 1599
+}
+push $N7ee7ec00
+push $cut_paste_input
+Dot {
+ name Dot3
+ selected true
+ xpos 3550
+ ypos 1458
+}
+CopyBBox {
+ inputs 2
+ name CopyBBox1
+ selected true
+ xpos 3516
+ ypos 1494
+}
+CopyMetaData {
+ inputs 2
+ name CopyMetaData3
+ selected true
+ xpos 3515
+ ypos 1595
+}
+ModifyMetaData {
+ metadata {
+  {set dps/nuke_script "\[basename \[value root.name]]"}
+ }
+ name Script_DATA2
+ selected true
+ xpos 3515
+ ypos 1646
+}
+WriteTank {
+ name ShotGridWrite2
+ tile_color 0xad8902ff
+ label "SG Write Exr 16bits"
+ note_font Verdana
+ selected true
+ xpos 3515
+ ypos 1736
+ tank_channel ""
+ profile_name "Exr 16bits"
+ render_template nuke_shot_render_exr
+ publish_template nuke_shot_render_pub_exr
+ cached_path P:/PROYECTOS/CAMPEONES_2/VFX/CAM_B01/CAM_B01_055/CAM_B01_055_0010/STEPS/CMP/NUKE/IMAGES/NUKE_v000/CAM_B01_055_0010_CMP_v000.%04d.exr
+ proxy_render_template ""
+ proxy_publish_template ""
+ tk_cached_proxy_path P:/PROYECTOS/CAMPEONES_2/VFX/CAM_B01/CAM_B01_055/CAM_B01_055_0010/STEPS/CMP/NUKE/IMAGES/NUKE_v000/CAM_B01_055_0010_CMP_v000.%04d.exr
+ tk_last_known_script "P:\\PROYECTOS\\CAMPEONES_2\\VFX\\CAM_B01\\CAM_B01_055\\CAM_B01_055_0010\\STEPS\\CMP\\NUKE\\SCENES\\CAM_B01_055_0010_CMP_v000.nk"
+ tk_file_type exr
+ tk_file_type_settings "(dp0\nVdatatype\np1\nV16 bit half\np2\nsVchannels\np3\nVrgba\np4\nsVmetadata\np5\nVall metadata\np6\nsVwrite_ACES_compliant_EXR\np7\nI00\nsVcompression\np8\nVZip (1 scanline)\np9\ns."
+ tk_write_node_settings ""
+ channels rgba
+ frame ""
+ colorspace "ACES - ACES2065-1"
+ views {main}
+ _promoted_0 {}
+ _promoted_1 {}
+ _promoted_2 {}
+ _promoted_3 {}
+ _promoted_4 {}
+ _promoted_5 {}
+ _promoted_6 {}
+ _promoted_7 {}
+ _promoted_8 {}
+ _promoted_9 {}
+ _promoted_10 {}
+ _promoted_11 {}
+ _promoted_12 {}
+ _promoted_13 {}
+ _promoted_14 {}
+ _promoted_15 {}
+ _promoted_16 {}
+ _promoted_17 {}
+ _promoted_18 {}
+ _promoted_19 {}
+ tk_before_render ""
+ beforeFrameRender ""
+ afterFrameRender copy_rendered_files.cacheAndCopy().copyFiles()
+ tk_after_render ""
+ renderProgress ""
+}

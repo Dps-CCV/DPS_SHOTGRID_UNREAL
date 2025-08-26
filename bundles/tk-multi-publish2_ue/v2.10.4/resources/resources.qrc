@@ -1,0 +1,35 @@
+<RCC>
+  <qresource prefix="tk_multi_publish2">
+    <file>browse.png</file>
+    <file>browse_menu.png</file>
+    <file>browse_white.png</file>
+    <file>down_arrow.png</file>
+    <file>right_arrow.png</file>
+    <file>refresh.png</file>
+    <file>drag_handle.png</file>
+    <file>file.png</file>
+    <file>image_sequence.png</file>
+    <file>help.png</file>
+    <file>contract.png</file>
+    <file>expand.png</file>
+    <file>settings.png</file>
+    <file>status_validate.png</file>
+    <file>status_load.png</file>
+    <file>status_error.png</file>
+    <file>status_success.png</file>
+    <file>status_warning.png</file>
+    <file>status_publish.png</file>
+    <file>icon_256.png</file>
+    <file>cross.png</file>
+    <file>shotgun.png</file>
+    <file>task.png</file>
+    <file>item.png</file>
+    <file>camera.png</file>
+    <file>star.png</file>
+    <file>publish_complete.png</file>
+    <file>publish_failed.png</file>
+    <file>overlay_loading.png</file>
+    <file>trash.png</file>
+    <file>search.png</file>
+  </qresource>
+</RCC>

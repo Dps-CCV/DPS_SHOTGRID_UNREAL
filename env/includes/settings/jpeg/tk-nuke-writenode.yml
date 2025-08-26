@@ -1,0 +1,191 @@
+# Copyright (c) 2017 Shotgun Software Inc.
+#
+# CONFIDENTIAL AND PROPRIETARY
+#
+# This work is provided "AS IS" and subject to the Shotgun Pipeline Toolkit
+# Source Code License included in this distribution package. See LICENSE.
+# By accessing, using, copying or modifying this work you indicate your
+# agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
+# not expressly granted therein are reserved by Shotgun Software Inc.
+
+################################################################################
+
+includes:
+- $CONFIG_FOLDER/env/includes/app_locations.yml
+
+################################################################################
+
+# asset
+settings.tk-nuke-writenode.asset:
+  template_script_work: nuke_asset_work
+  show_convert_actions: True
+  write_nodes:
+    - file_type: jpeg
+      name: Render JPG
+      proxy_publish_template:
+      proxy_render_template:
+      publish_template: nuke_asset_render_pub
+      render_template: nuke_asset_render
+      settings:
+        _jpeg_quality: 1
+        _jpeg_sub_sampling: 4:4:4
+        channels: rgb
+      tank_type: Rendered Image
+      tile_color: [ 173, 137, 2 ]
+      promote_write_knobs: [ ]
+    - file_type: jpeg
+      name: PRECOMP
+      proxy_publish_template:
+      proxy_render_template:
+      publish_template: nuke_asset_precomp_pub
+      render_template: nuke_asset_precomp
+      settings:
+        _jpeg_quality: 1
+        _jpeg_sub_sampling: 4:4:4
+        channels: rgb
+      tank_type: Rendered Image
+      tile_color: [ 0, 209, 107 ]
+      promote_write_knobs: []
+    - file_type: exr
+      name: TECH_PRECOMP
+      proxy_publish_template:
+      proxy_render_template:
+      publish_template: nuke_asset_precomp_pub
+      render_template: nuke_asset_precomp
+      settings:
+        datatype: 32 bit float
+        channels: all
+        write_ACES_compliant_EXR: false
+        colorspace: "linear"
+        metadata: "all metadata"
+        compression: Zip (1 scanline)
+      tank_type: Rendered Image
+      tile_color: [ 8, 192, 209 ]
+      promote_write_knobs: [ ]
+    - file_type: png
+      name: IMAGE_PLANE
+      proxy_publish_template:
+      proxy_render_template:
+      publish_template: nuke_asset_imageplane_pub
+      render_template: nuke_asset_imageplane
+      settings:
+        channels: rgba
+        colorspace: "sRGB"
+      tank_type: Rendered Image
+      tile_color: [ 148, 7, 178 ]
+      promote_write_knobs: [ ]
+    - file_type: tiff
+      name: MATTE_PAINT
+      proxy_publish_template:
+      proxy_render_template:
+      publish_template: nuke_asset_mattepaint_pub
+      render_template: nuke_asset_mattepaint
+      settings:
+        channels: rgba
+        colorspace: "sRGB"
+        datatype: 16 bit
+      tank_type: Rendered Image
+      tile_color: [ 128, 37, 78 ]
+      promote_write_knobs: [ ]
+  location: "@apps.tk-nuke-writenode.location"
+
+# shot
+settings.tk-nuke-writenode.shot:
+  template_script_work: nuke_shot_work
+  show_convert_actions: True
+  write_nodes:
+  - file_type: jpeg
+    name: Render JPG
+    proxy_publish_template:
+    proxy_render_template:
+    publish_template: nuke_shot_render_pub
+    render_template: nuke_shot_render
+    settings:
+      _jpeg_quality: 1
+      _jpeg_sub_sampling: 4:4:4
+      channels: rgb
+    tank_type: Rendered Image
+    tile_color: [173, 137, 2]
+    promote_write_knobs: []
+  - file_type: dpx
+    name: ALPHA
+    proxy_publish_template:
+    proxy_render_template:
+    publish_template: nuke_shot_render_alpha_pub
+    render_template: nuke_shot_render_alpha
+    settings:
+      datatype: 16 bit
+      channels: rgba
+      colorspace: "linear"
+    tank_type: Rendered Image
+    tile_color: [ 106, 181, 0 ]
+    promote_write_knobs: [ ]
+  - file_type: jpeg
+    name: PRECOMP
+    proxy_publish_template:
+    proxy_render_template:
+    publish_template: nuke_precomp_pub
+    render_template: nuke_precomp
+    settings:
+      _jpeg_quality: 1
+      _jpeg_sub_sampling: 4:4:4
+      channels: rgb
+    tank_type: Rendered Image
+    tile_color: [0, 209, 107]
+    promote_write_knobs: []
+  - file_type: mov
+    name: PRECOMP_MP4
+    proxy_publish_template:
+    proxy_render_template:
+    publish_template: nuke_precomp_h264_pub
+    render_template: nuke_precomp_h264
+    settings:
+      mov64_codec: h264
+      mov_h264_codec_profile: "High 4:2:0 8-bit"
+      mov64_quality: High
+      channels: rgb
+    tank_type: Rendered Image
+    tile_color: [0, 209, 107]
+    promote_write_knobs: []
+  - file_type: exr
+    name: TECH_PRECOMP
+    proxy_publish_template:
+    proxy_render_template:
+    publish_template: nuke_precomp_pub
+    render_template: nuke_precomp
+    settings:
+      datatype: 32 bit float
+      channels: all
+      write_ACES_compliant_EXR: false
+      colorspace: "linear"
+      metadata: "all metadata"
+      compression: Zip (1 scanline)
+    tank_type: Rendered Image
+    tile_color: [ 8, 192, 209 ]
+    promote_write_knobs: []
+  - file_type: png
+    name: IMAGE_PLANE
+    proxy_publish_template:
+    proxy_render_template:
+    publish_template: nuke_imageplane_pub
+    render_template: nuke_imageplane
+    settings:
+      channels: rgba
+      colorspace: "sRGB"
+    tank_type: Rendered Image
+    tile_color: [ 148, 7, 178 ]
+    promote_write_knobs: [ ]
+  - file_type: tiff
+    name: MATTE_PAINT
+    proxy_publish_template:
+    proxy_render_template:
+    publish_template: nuke_mattepaint_pub
+    render_template: nuke_mattepaint
+    settings:
+      channels: rgba
+      colorspace: "sRGB"
+      datatype: 16 bit
+    tank_type: Rendered Image
+    tile_color: [ 128, 37, 78 ]
+    promote_write_knobs: [ ]
+  location: "@apps.tk-nuke-writenode.location"

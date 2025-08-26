@@ -1,0 +1,92 @@
+# Copyright (c) 2017 Shotgun Software Inc.
+#
+# CONFIDENTIAL AND PROPRIETARY
+#
+# This work is provided "AS IS" and subject to the Shotgun Pipeline Toolkit
+# Source Code License included in this distribution package. See LICENSE.
+# By accessing, using, copying or modifying this work you indicate your
+# agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
+# not expressly granted therein are reserved by Shotgun Software Inc.
+#
+
+# location descriptors for engines used in this configuration
+
+################################################################################
+
+# 3dsMax
+engines.tk-3dsmaxplus.location:
+  type: app_store
+  name: tk-3dsmaxplus
+  version: v0.6.2
+engines.tk-3dsmax.location:
+  type: app_store
+  name: tk-3dsmax
+  version: v1.4.1
+engines.tk-aftereffects.location:
+  type: app_store
+  name: tk-aftereffects
+  version: v0.4.5
+engines.tk-alias.location:
+  type: app_store
+  name: tk-alias
+  version: v4.1.5
+engines.tk-desktop.location:
+  type: app_store
+  name: tk-desktop
+  version: v2.7.8
+engines.tk-desktop2.location:
+  type: app_store
+  name: tk-desktop2
+  version: v1.6.0
+engines.tk-flame.location:
+  type: app_store
+  name: tk-flame
+  version: v1.19.4
+engines.tk-houdini.location:
+  type: app_store
+  name: tk-houdini
+  version: v1.9.3
+engines.tk-mari.location:
+  type: app_store
+  name: tk-mari
+  version: v1.4.1
+engines.tk-maya.location:
+  type: app_store
+  name: tk-maya
+  version: v0.13.3
+engines.tk-motionbuilder.location:
+  type: app_store
+  name: tk-motionbuilder
+  version: v0.8.2
+#engines.tk-nuke.location:
+#  type: app_store
+#  name: tk-nuke
+#  version: v0.15.1
+#engines.tk-nuke.location:
+#  name: tk-nuke
+#  type: path
+#  path: '{CONFIG_FOLDER}/bundles/tk-nuke'
+
+engines.tk-nuke.location:
+  type: github_release
+  organization: Dps-CCV
+  repository: tk-nuke
+  version: v0.15.1e
+
+engines.tk-photoshopcc.location:
+  type: app_store
+  name: tk-photoshopcc
+  version: v1.11.5
+engines.tk-shell.location:
+  type: app_store
+  name: tk-shell
+  version: v0.10.1
+engines.tk-shotgun.location:
+  type: app_store
+  name: tk-shotgun
+  version: v0.11.1
+engines.tk-vred.location:
+  type: app_store
+  name: tk-vred
+  version: v3.5.0
+

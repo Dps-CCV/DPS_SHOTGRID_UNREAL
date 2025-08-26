@@ -1,0 +1,232 @@
+# Copyright (c) 2016 Shotgun Software Inc.
+#
+# CONFIDENTIAL AND PROPRIETARY
+#
+# This work is provided "AS IS" and subject to the Shotgun Pipeline Toolkit
+# Source Code License included in this distribution package. See LICENSE.
+# By accessing, using, copying or modifying this work you indicate your
+# agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
+# not expressly granted therein are reserved by Shotgun Software Inc.
+#
+
+################################################################################
+
+includes:
+- ./frameworks.yml
+
+################################################################################
+# location descriptors for apps used in this configuration
+
+# ---- Multi apps
+
+# about
+apps.tk-multi-about.location:
+  type: app_store
+  name: tk-multi-about
+  version: v0.4.2
+apps.tk-multi-breakdown.location:
+  type: app_store
+  name: tk-multi-breakdown
+  version: v1.9.1
+apps.tk-multi-breakdown2.location:
+  type: app_store
+  name: tk-multi-breakdown2
+  version: v0.4.3
+apps.tk-multi-breakdown2.mayalocation:
+  type: app_store
+  name: tk-multi-breakdown2
+  version: v0.4.3
+apps.tk-multi-data-validation.location:
+  type: app_store
+  name: tk-multi-data-validation
+  version: v0.1.3
+apps.tk-multi-demo.location:
+  type: app_store
+  name: tk-multi-demo
+  version: v1.5.2
+apps.tk-multi-launchapp.location:
+  type: app_store
+  name: tk-multi-launchapp
+  version: v0.12.2
+apps.tk-multi-loader2.location:
+  type: app_store
+  name: tk-multi-loader2
+  version: v1.21.2
+apps.tk-multi-publish2.location:
+  type: app_store
+  name: tk-multi-publish2
+  version: v2.10.4
+apps.tk-multi-pythonconsole.location:
+  type: app_store
+  name: tk-multi-pythonconsole
+  version: v1.3.1
+apps.tk-multi-reviewsubmission.location:
+  type: app_store
+  name: tk-multi-reviewsubmission
+  version: v1.2.1
+apps.tk-multi-screeningroom.location:
+  type: app_store
+  name: tk-multi-screeningroom
+  version: v0.6.2
+apps.tk-multi-setframerange.location:
+  type: app_store
+  name: tk-multi-setframerange
+  version: v0.5.1
+apps.tk-multi-shotgunpanel.location:
+  type: app_store
+  name: tk-multi-shotgunpanel
+  version: v1.8.2
+apps.tk-multi-snapshot.location:
+  type: app_store
+  name: tk-multi-snapshot
+  version: v0.10.1
+apps.tk-multi-workfiles2.location:
+  type: app_store
+  name: tk-multi-workfiles2
+  version: v0.15.5
+apps.tk-multi-devutils.location:
+  type: app_store
+  name: tk-multi-devutils
+  version: v1.3.1
+apps.tk-multi-bg-publish.location:
+  type: app_store
+  name: tk-multi-bg-publish
+  version: v0.2.1
+
+apps.tk-shotgun-folders.location:
+  type: app_store
+  name: tk-shotgun-folders
+  version: v0.4.0
+apps.tk-shotgun-launchfolder.location:
+  type: app_store
+  name: tk-shotgun-launchfolder
+  version: v0.3.1
+apps.tk-shotgun-launchpublish.location:
+  type: app_store
+  name: tk-shotgun-launchpublish
+  version: v0.7.1
+apps.tk-shotgun-launchvredreview.location:
+  type: app_store
+  name: tk-shotgun-launchvredreview
+  version: v1.1.3
+
+#apps.tk-hiero-export.location:
+#  type: app_store
+#  name: tk-hiero-export
+#  version: v0.8.0
+
+## hiero export
+#apps.tk-hiero-export.location:
+#  name: tk-hiero-export
+#  type: path
+#  path: '{CONFIG_FOLDER}/bundles/tk-hiero-export'
+
+apps.tk-hiero-export.location:
+  type: github_release
+  organization: Dps-CCV
+  repository: tk-hiero-export
+  version: v0.8.0f
+  private: true
+
+apps.tk-hiero-openinshotgun.location:
+  type: app_store
+  name: tk-hiero-openinshotgun
+  version: v0.5.0
+
+  ###Houdini apps
+#apps.tk-houdini-alembicnode.location:
+#  type: app_store
+#  name: tk-houdini-alembicnode
+#  version: v0.6.0
+
+## houdini alembicnode
+#apps.tk-houdini-alembicnode.location:
+#  type: path
+#  name: tk-houdini-alembicnode
+#  path: '{CONFIG_FOLDER}/bundles/tk-houdini-alembicnode'
+
+apps.tk-houdini-alembicnode.location:
+  type: github_release
+  organization: Dps-CCV
+  repository: tk-houdini-alembicnode
+  version: v0.6.0
+
+
+apps.tk-houdini-mantranode.location:
+  type: app_store
+  name: tk-houdini-mantranode
+  version: v0.6.0
+
+## houdini cachenode
+#apps.tk-houdini-cachenode.location:
+#  type: path
+#  name: tk-houdini-cachenode
+#  path: "{CONFIG_FOLDER}/bundles/tk-houdini-cachenode"
+
+## houdini deadlinenode
+#apps.tk-houdini-deadlinenode.location:
+#  name: tk-houdini-deadlinenode
+#  type: path
+#  path: "{CONFIG_FOLDER}/bundles/tk-houdini-deadlinenode"
+
+# houdini arnold
+apps.tk-houdini-arnoldnode.location:
+  name: tk-houdini-arnoldnode
+  type: path
+  path: '{CONFIG_FOLDER}/bundles/tk-houdini-arnoldnode'
+# houdini geometry
+apps.tk-houdini-geometrynode.location:
+  name: tk-houdini-geometrynode
+  type: path
+  path: '{CONFIG_FOLDER}/bundles/tk-houdini-geometrynode'
+# houdini flipbook
+apps.tk-houdini-flipbook.location:
+  name: tk-houdini-flipbook
+  type: path
+  path: '{CONFIG_FOLDER}/bundles/tk-houdini-flipbook'
+apps.tk-nuke-quickreview.location:
+  type: app_store
+  name: tk-nuke-quickreview
+  version: v1.2.1
+
+#apps.tk-nuke-writenode.location:
+#  name: tk-nuke-writenode
+#  type: app_store
+#  version: v1.7.2
+
+#apps.tk-nuke-writenode.location:
+#  name: tk-nuke-writenode
+#  type: path
+#  path: '{CONFIG_FOLDER}/bundles/tk-nuke-writenode'
+
+apps.tk-nuke-writenode.location:
+  type: github_release
+  organization: Dps-CCV
+  repository: tk-nuke-writenode
+  version: v1.7.1v
+
+
+apps.tk-flame-export.location:
+  name: tk-flame-export
+  type: app_store
+  version: v1.11.3
+apps.tk-flame-review.location:
+  name: tk-flame-review
+  type: app_store
+  version: v1.5.4
+apps.tk-mari-projectmanager.location:
+  name: tk-mari-projectmanager
+  type: app_store
+  version: v1.4.1
+frameworks: '@frameworks'
+# bug report
+apps.tk-multi-bugreporter.location:
+  name: tk-multi-bugreporter
+  type: path
+  path: '{CONFIG_FOLDER}/bundles/tk-multi-bugreporter'
+apps.tk-multi-scenebuilder.location:
+  type: app_store
+  name: tk-multi-bg-publish
+  version: v0.2.1
+
+

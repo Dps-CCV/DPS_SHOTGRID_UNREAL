@@ -1,0 +1,97 @@
+[
+  {
+    "collection": {
+      "children": [
+        {
+          "collection": {
+            "children": [
+              {
+                "absOverride": {
+                  "attrValue": {
+                    "connectable": true, 
+                    "type": "Bool", 
+                    "value": true
+                  }, 
+                  "attribute": "renderable", 
+                  "localRender": false, 
+                  "name": "renderable", 
+                  "selfEnabled": true
+                }
+              }
+            ], 
+            "isolateSelected": false, 
+            "name": "LeaveEmpty", 
+            "selector": {
+              "simpleSelector": {
+                "customFilterValue": "", 
+                "pattern": "*", 
+                "staticSelection": "", 
+                "typeFilter": 2
+              }
+            }, 
+            "selfEnabled": true
+          }
+        }, 
+        {
+          "collection": {
+            "children": [
+              {
+                "collection": {
+                  "children": [
+                    {
+                      "absOverride": {
+                        "attrValue": {
+                          "connectable": true, 
+                          "type": "Bool", 
+                          "value": false
+                        }, 
+                        "attribute": "renderable", 
+                        "localRender": false, 
+                        "name": "renderable1", 
+                        "selfEnabled": true
+                      }
+                    }
+                  ], 
+                  "isolateSelected": false, 
+                  "name": "shapes", 
+                  "selector": {
+                    "simpleSelector": {
+                      "customFilterValue": "", 
+                      "pattern": "*", 
+                      "staticSelection": "", 
+                      "typeFilter": 2
+                    }
+                  }, 
+                  "selfEnabled": true
+                }
+              }
+            ], 
+            "isolateSelected": false, 
+            "name": "Add_Non_Renderable_Cameras", 
+            "selector": {
+              "simpleSelector": {
+                "customFilterValue": "", 
+                "pattern": "", 
+                "staticSelection": "|persp", 
+                "typeFilter": 1
+              }
+            }, 
+            "selfEnabled": true
+          }
+        }
+      ], 
+      "isolateSelected": false, 
+      "name": "Add_Renderable_Cameras", 
+      "notes": "Set cameras as renderable by adding them\nto the collection.\n...\nSelect this template if cameras are not\nrender enabled in your scene.\n...\nNote:\nPerspective camera is set to be\na non_renderable camera ", 
+      "selector": {
+        "simpleSelector": {
+          "customFilterValue": "", 
+          "pattern": "", 
+          "staticSelection": "|persp", 
+          "typeFilter": 1
+        }
+      }, 
+      "selfEnabled": true
+    }
+  }
+]

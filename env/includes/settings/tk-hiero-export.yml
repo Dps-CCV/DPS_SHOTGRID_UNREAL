@@ -1,0 +1,38 @@
+# Copyright (c) 2017 Shotgun Software Inc.
+#
+# CONFIDENTIAL AND PROPRIETARY
+#
+# This work is provided "AS IS" and subject to the Shotgun Pipeline Toolkit
+# Source Code License included in this distribution package. See LICENSE.
+# By accessing, using, copying or modifying this work you indicate your
+# agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
+# not expressly granted therein are reserved by Shotgun Software Inc.
+
+################################################################################
+
+includes:
+- ../app_locations.yml
+
+################################################################################
+
+settings.tk-hiero-export:
+  nuke_script_toolkit_write_nodes:
+  - {channel: Render 16bits, name: 'Render 16bits'}
+  - {channel: ALPHA, name: 'ALPHA'}
+  - {channel: IMAGE_PLANE, name: 'IMAGE_PLANE'}
+  template_nuke_script_path: hiero_project_publish
+  template_plate_path: hiero_plate_path
+  template_render_path: hiero_render_path
+  template_plate2_path: hiero_plate2_path
+  template_layer_path: hiero_layer_path
+  template_sound_path: hiero_sound_path
+  template_version: hiero_version
+  custom_template_fields: [{keyword: Episode, description: The episode name}, {keyword: Project, description: The project code}]
+  hook_get_shot: '{config}/tk-hiero-export/hiero_get_shot.py'
+  hook_resolve_custom_strings: '{config}/tk-hiero-export/hiero_resolve_custom_strings.py'
+  hook_customize_export_ui: '{config}/tk-hiero-export/hiero_customize_export_ui.py'
+  hook_update_cuts: '{config}/tk-hiero-export/hiero_update_cuts.py'
+  hook_update_shot: '{config}/tk-hiero-export/hiero_update_shot.py'
+  vref_published_file_type: VREF Hiero
+  parafx_published_file_type: PARAFX Hiero
+  location: "@apps.tk-hiero-export.location"

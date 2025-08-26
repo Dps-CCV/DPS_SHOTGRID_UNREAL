@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog>
+   <CatalogItem>
+      <CatalogTransformPath>V:/LA_CASA_ENTRE_LOS_CACTUS/CONFIG/MAYA/2020/color_prefs.xml</CatalogTransformPath>
+      <CatalogTransform>
+        File open failed: V:/LA_CASA_ENTRE_LOS_CACTUS/CONFIG/MAYA/2020/color_prefs.xml
+      </CatalogTransform>
+   </CatalogItem>
+   <CatalogItem>
+      <CatalogTransformPath>V:/LA_CASA_ENTRE_LOS_CACTUS/CONFIG/MAYA/2020/prefs/38712794b3990ed7a6c0b8ff88b70a11.xml</CatalogTransformPath>
+      <CatalogTransform>
+        File open failed: V:/LA_CASA_ENTRE_LOS_CACTUS/CONFIG/MAYA/2020/prefs/38712794b3990ed7a6c0b8ff88b70a11.xml
+      </CatalogTransform>
+   </CatalogItem>
+   <CatalogItem>
+      <CatalogTransformPath>V:/LA_CASA_ENTRE_LOS_CACTUS/CONFIG/MAYA/2020/prefs/800cba232dcbcf29f6cd9f5a3c27a33b.xml</CatalogTransformPath>
+      <CatalogTransform>
+        File open failed: V:/LA_CASA_ENTRE_LOS_CACTUS/CONFIG/MAYA/2020/prefs/800cba232dcbcf29f6cd9f5a3c27a33b.xml
+      </CatalogTransform>
+   </CatalogItem>
+   <CatalogItem>
+      <CatalogTransformPath>V:/LA_CASA_ENTRE_LOS_CACTUS/CONFIG/MAYA/2020/prefs/synColorConfig.xml</CatalogTransformPath>
+      <CatalogTransform>
+        File open failed: V:/LA_CASA_ENTRE_LOS_CACTUS/CONFIG/MAYA/2020/prefs/synColorConfig.xml
+      </CatalogTransform>
+   </CatalogItem>
+   <CatalogItem>
+      <CatalogTransformPath>V:/LA_CASA_ENTRE_LOS_CACTUS/CONFIG/MAYA/2020/prefs/synColorFileRules.xml</CatalogTransformPath>
+      <CatalogTransform>
+        File open failed: V:/LA_CASA_ENTRE_LOS_CACTUS/CONFIG/MAYA/2020/prefs/synColorFileRules.xml
+      </CatalogTransform>
+   </CatalogItem>
+</Catalog>
