@@ -1,0 +1,8 @@
+/core/schema/project/CONFIG/NUKE/.idea/
+/.idea/
+/core/install_location.yml
+/core/pipeline_configuration.yml
+/core/shotgun.yml
+/core/interpreter_Darwin.cfg
+/core/interpreter_Linux.cfg
+/core/interpreter_Windows.cfg
